@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Ingredient extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'ammount',
-        'isPaid',
+        'name',
     ];
 
     /**
@@ -26,12 +25,5 @@ class Order extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'isPaid' => 'boolean',
     ];
-
-
-    public function products()
-    {
-        return $this->hasMany(\App\Product::class);
-    }
 }

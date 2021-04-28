@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -33,16 +33,11 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo(\App\Category::class);
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(\App\Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function ingredients()
     {
-        return $this->hasMany(\App\Ingredient::class);
+        return $this->belongsToMany(Ingredient::class);
     }
 }

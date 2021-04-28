@@ -1,23 +1,23 @@
 models:
-  Product:
+  Models\Product:
     category_id: id foreign:categories
     name: string unique
     description: string
     timestamps: true
     relationships:
       belongsTo: Category
-      hasMany: Ingredient
-  Category:
+      belongsToMany: Ingredient
+  Models\Category:
     name: string unique
     image: string
     relationships:
-      hasMany: Product
-  Ingredient:
+      belongsToMany: Product
+  Models\Ingredient:
     name: string unique
-  Order:
+  Models\Order:
     ammount: int
     isPaid: boolean
     relationships:
-      hasMany: Product
+      belongsToMany: Product
 
 seeders: Category, Product, Ingredient, Order

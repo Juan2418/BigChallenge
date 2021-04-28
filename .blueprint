@@ -1,16 +1,19 @@
 created:
-    - database/factories/ProductFactory.php
-    - database/factories/CategoryFactory.php
-    - database/factories/IngredientFactory.php
-    - database/factories/OrderFactory.php
-    - database/migrations/2021_04_28_190419_create_products_table.php
-    - database/migrations/2021_04_28_190420_create_categories_table.php
-    - database/migrations/2021_04_28_190421_create_ingredients_table.php
-    - database/migrations/2021_04_28_190422_create_orders_table.php
-    - app/Product.php
-    - app/Category.php
-    - app/Ingredient.php
-    - app/Order.php
+    - database/factories/Models/ProductFactory.php
+    - database/factories/Models/CategoryFactory.php
+    - database/factories/Models/IngredientFactory.php
+    - database/factories/Models/OrderFactory.php
+    - database/migrations/2021_04_28_194105_create_products_table.php
+    - database/migrations/2021_04_28_194106_create_categories_table.php
+    - database/migrations/2021_04_28_194107_create_ingredients_table.php
+    - database/migrations/2021_04_28_194108_create_orders_table.php
+    - database/migrations/2021_04_28_194109_create_ingredient_product_table.php
+    - database/migrations/2021_04_28_194110_create_category_product_table.php
+    - database/migrations/2021_04_28_194111_create_order_product_table.php
+    - app/Models/Product.php
+    - app/Models/Category.php
+    - app/Models/Ingredient.php
+    - app/Models/Order.php
     - database/seeders/CategorySeeder.php
     - database/seeders/ProductSeeder.php
     - database/seeders/IngredientSeeder.php
@@ -20,3 +23,7 @@ models:
     Category: { name: 'string unique', image: string, relationships: { hasMany: Product } }
     Ingredient: { name: 'string unique' }
     Order: { ammount: int, isPaid: boolean, relationships: { hasMany: Product } }
+    Models\Product: { category_id: 'id foreign:categories', name: 'string unique', description: string, timestamps: timestamps, relationships: { belongsTo: Category, belongsToMany: Ingredient } }
+    Models\Category: { name: 'string unique', image: string, relationships: { belongsToMany: Product } }
+    Models\Ingredient: { name: 'string unique' }
+    Models\Order: { ammount: int, isPaid: boolean, relationships: { belongsToMany: Product } }

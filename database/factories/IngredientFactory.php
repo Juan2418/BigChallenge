@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Ingredient;
+use App\Models\Ingredient;
 
 class IngredientFactory extends Factory
 {

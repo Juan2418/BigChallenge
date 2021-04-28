@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ingredient extends Model
+class Order extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,8 @@ class Ingredient extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'ammount',
+        'isPaid',
     ];
 
     /**
@@ -25,5 +26,12 @@ class Ingredient extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'isPaid' => 'boolean',
     ];
+
+
+    public function products()
+    {
+        return $this->belongsToMany(\App\Models\Product::class);
+    }
 }
