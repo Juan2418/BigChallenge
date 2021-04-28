@@ -1,0 +1,23 @@
+models:
+  Product:
+    category_id: id foreign:categories
+    name: string unique
+    description: string
+    timestamps: true
+    relationships:
+      belongsTo: Category
+      hasMany: Ingredient
+  Category:
+    name: string unique
+    image: string
+    relationships:
+      hasMany: Product
+  Ingredient:
+    name: string unique
+  Order:
+    ammount: int
+    isPaid: boolean
+    relationships:
+      hasMany: Product
+
+seeders: Category, Product, Ingredient, Order
