@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
 
     /**
@@ -15,7 +16,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'ammount',
+        'amount',
         'isPaid',
     ];
 
