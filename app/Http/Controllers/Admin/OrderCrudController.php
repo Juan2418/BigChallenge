@@ -39,8 +39,11 @@ class OrderCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        CRUD::column('id')->label('Order Id');
         CRUD::column('amount');
-        CRUD::column('isPaid');
+        CRUD::column('isPaid')->type('boolean');
+        CRUD::column('products')->type('relationship')->label('Products');
+
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -61,7 +64,7 @@ class OrderCrudController extends CrudController
 
         CRUD::field('amount');
         CRUD::field('isPaid');
-
+        CRUD::field('products')->type('select2_multiple')->label('Products');
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
