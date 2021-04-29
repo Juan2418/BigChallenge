@@ -34,14 +34,17 @@ class MonthlyOrdersChartController extends ChartController
      *
      * @return json
      */
-    // public function data()
-    // {
-    //     $users_created_today = \App\User::whereDate('created_at', today())->count();
+    public function data()
+    {
+        $ordersInThePastMonth = array(31);
+        for ($daysBack = 30; $daysBack >= 0; $daysBack--) {
+            $ordersInThePastMonth[] = \App\Models\Order::where('created_at', '>=', today()->subDays($daysBack))->count();
+        }
 
-    //     $this->chart->dataset('Users Created', 'bar', [
-    //                 $users_created_today,
-    //             ])
-    //         ->color('rgba(205, 32, 31, 1)')
-    //         ->backgroundColor('rgba(205, 32, 31, 0.4)');
-    // }
+        $this->chart->dataset('Orders Created', 'line',
+            $ordersInThePastMonth
+        )
+            ->color('rgba(205, 32, 31, 1)')
+            ->backgroundColor('rgba(205, 32, 31, 0.4)');
+    }
 }
