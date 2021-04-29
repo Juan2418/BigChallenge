@@ -18,4 +18,5 @@ Route::group([
     Route::crud('ingredient', 'IngredientCrudController');
     Route::crud('order', 'OrderCrudController');
     Route::crud('product', 'ProductCrudController');
+    Route::get('charts/monthly-orders', 'Charts\MonthlyOrdersChartController@response')->name('charts.monthly-orders.index');
 }); // this should be the absolute last line of this file
