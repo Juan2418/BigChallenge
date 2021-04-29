@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddQuantity extends Migration
+class AddQuantityingredientProduct extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddQuantity extends Migration
      */
     public function up()
     {
-        Schema::table('order_product', function (Blueprint $table) {
-            $table->unsignedInteger('quantity')->default(0);
+        Schema::table('ingredient_product', function (Blueprint $table) {
+            $table->unsignedInteger('quantity')->default(1);
         });
     }
 
@@ -25,7 +25,7 @@ class AddQuantity extends Migration
      */
     public function down()
     {
-        Schema::table('order_product', function (Blueprint $table) {
+        Schema::table('ingredient_product', function (Blueprint $table) {
             $table->removeColumn('quantity');
         });
     }
