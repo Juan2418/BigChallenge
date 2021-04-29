@@ -26,7 +26,8 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'amount' => 'required|numeric|min:0',
+            'products' => 'required'
         ];
     }
 
