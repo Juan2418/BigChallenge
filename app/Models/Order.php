@@ -35,4 +35,5 @@ class Order extends Model
     {
         return $this->belongsToMany(\App\Models\Product::class)->withPivot('quantity');
     }
+
 }

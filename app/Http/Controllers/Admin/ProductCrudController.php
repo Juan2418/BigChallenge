@@ -42,7 +42,7 @@ class ProductCrudController extends CrudController
         CRUD::column('category_id');
         CRUD::column('name');
         CRUD::column('description');
-        CRUD::column('ingredients')->type('relationship')->label('Ingredients')->entity('ingredients');
+        CRUD::column('ingredients')->type('relationship')->label('Ingredients');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -64,6 +64,8 @@ class ProductCrudController extends CrudController
         CRUD::field('category_id');
         CRUD::field('name');
         CRUD::field('description');
+        CRUD::field('ingredients')->type('relationship')->label('Ingredients')->entity('ingredients');
+
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
