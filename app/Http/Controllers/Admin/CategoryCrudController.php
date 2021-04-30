@@ -40,7 +40,7 @@ class CategoryCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('name');
-        CRUD::column('image');
+        CRUD::column('image')->type('image');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
