@@ -32,7 +32,9 @@
                 </div>
             @endif
 
-            <div id="root"></div>
+            <div id="app">
+                <router-link to="/">Home</router-link>
+            </div>
         </div>
         <script src="{{mix('/js/app.js')}}"></script>
     </body>
