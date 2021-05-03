@@ -1,9 +1,10 @@
 import VueRouter from "vue-router";
+import categories from './views/categories.vue';
 
 let routes = [
     {
         path: '/',
-        component: require('./views/categories.vue'),
+        component: categories,
     }
 ];
 
