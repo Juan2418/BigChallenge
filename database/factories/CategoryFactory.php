@@ -23,8 +23,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'image' => $this->faker->word,
+            'name' => $this->faker->name(),
+            'image' => 'icons/warning.svg',
         ];
     }
 }
