@@ -26,6 +26,8 @@ import router from './routes.js';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+window.Event = new Vue();
+
 new Vue({
     el: '#app',
     router

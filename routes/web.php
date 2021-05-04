@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('/categories', function() {
-    return Category::all();
+    return Category::with('products')->latest()->get();
 });

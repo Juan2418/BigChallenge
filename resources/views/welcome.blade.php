@@ -19,7 +19,7 @@
 <body class="antialiased">
 
 <div
-    class="md:container">
+    class="">
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
@@ -34,9 +34,11 @@
         </div>
     @endif
 
-    <div id="app">
-        <router-link to="/">Home</router-link>
+    <div id="app"
+         class="grid grid-cols-2 grid-cols-main">
+        <router-link to="/" class="w-25">Home</router-link>
         <router-view></router-view>
+        <portal-target name="productList"></portal-target>
     </div>
 </div>
 <script src="{{mix('/js/app.js')}}"></script>
