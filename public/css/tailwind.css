@@ -28092,6 +28092,10 @@ video {
   grid-template-columns: none;
 }
 
+.grid-cols-main {
+  grid-template-columns: 10% 90%;
+}
+
 .auto-cols-auto {
   grid-auto-columns: auto;
 }
@@ -32463,6 +32467,27 @@ video {
 
 .backdrop-sepia {
   --tw-backdrop-sepia: sepia(100%);
+}
+
+.snap {
+  -ms-scroll-snap-type: var(--scroll-snap-direction) var(--scroll-snap-constraint);
+      scroll-snap-type: var(--scroll-snap-direction) var(--scroll-snap-constraint);
+}
+
+.snap-y {
+  --scroll-snap-direction: y;
+}
+
+.snap-mandatory {
+  --scroll-snap-constraint: mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+}
+
+a{
+  max-width: 1rem;
 }
 
 @media (min-width: 640px) {
@@ -59992,6 +60017,10 @@ video {
 
   .sm\:grid-cols-none {
     grid-template-columns: none;
+  }
+
+  .sm\:grid-cols-main {
+    grid-template-columns: 10% 90%;
   }
 
   .sm\:auto-cols-auto {
@@ -91739,6 +91768,10 @@ video {
     grid-template-columns: none;
   }
 
+  .md\:grid-cols-main {
+    grid-template-columns: 10% 90%;
+  }
+
   .md\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -123482,6 +123515,10 @@ video {
 
   .lg\:grid-cols-none {
     grid-template-columns: none;
+  }
+
+  .lg\:grid-cols-main {
+    grid-template-columns: 10% 90%;
   }
 
   .lg\:auto-cols-auto {
@@ -155229,6 +155266,10 @@ video {
     grid-template-columns: none;
   }
 
+  .xl\:grid-cols-main {
+    grid-template-columns: 10% 90%;
+  }
+
   .xl\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -186974,6 +187015,10 @@ video {
     grid-template-columns: none;
   }
 
+  .\32xl\:grid-cols-main {
+    grid-template-columns: 10% 90%;
+  }
+
   .\32xl\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -191189,6 +191234,4 @@ video {
     --tw-backdrop-sepia: sepia(100%);
   }
 }
-
-
 

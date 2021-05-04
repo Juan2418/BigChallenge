@@ -13,6 +13,10 @@ module.exports = {
                 },
 
             },
+            gridTemplateColumns: {
+                // Complex site-specific column configuration
+                'main': '10% 90%',
+            },
             minHeight: {
                 '0': '0',
                 '1/4': '25%',
