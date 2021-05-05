@@ -16,6 +16,7 @@ module.exports = {
             gridTemplateColumns: {
                 // Complex site-specific column configuration
                 'main': '10% 90%',
+                'product': '70% 30%'
             },
             minHeight: {
                 '0': '0',
@@ -33,6 +34,7 @@ module.exports = {
     variants: {
         extend: {
             scale: ['active', 'group-hover'],
+            animation: ['responsive', 'motion-safe', 'motion-reduce', 'hover']
         },
     },
     plugins: [],

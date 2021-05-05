@@ -28096,6 +28096,10 @@ video {
   grid-template-columns: 10% 90%;
 }
 
+.grid-cols-product {
+  grid-template-columns: 70% 30%;
+}
+
 .auto-cols-auto {
   grid-auto-columns: auto;
 }
@@ -31831,6 +31835,135 @@ video {
 .animate-bounce {
   -webkit-animation: bounce 1s infinite;
           animation: bounce 1s infinite;
+}
+
+.hover\:animate-none:hover {
+  -webkit-animation: none;
+          animation: none;
+}
+
+.hover\:animate-spin:hover {
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+}
+
+.hover\:animate-ping:hover {
+  -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+          animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.hover\:animate-pulse:hover {
+  -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.hover\:animate-bounce:hover {
+  -webkit-animation: bounce 1s infinite;
+          animation: bounce 1s infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-safe\:animate-none {
+    -webkit-animation: none;
+            animation: none;
+  }
+
+  .motion-safe\:animate-spin {
+    -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+  }
+
+  .motion-safe\:animate-ping {
+    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .motion-safe\:animate-pulse {
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .motion-safe\:animate-bounce {
+    -webkit-animation: bounce 1s infinite;
+            animation: bounce 1s infinite;
+  }
+
+  .motion-safe\:hover\:animate-none:hover {
+    -webkit-animation: none;
+            animation: none;
+  }
+
+  .motion-safe\:hover\:animate-spin:hover {
+    -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+  }
+
+  .motion-safe\:hover\:animate-ping:hover {
+    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .motion-safe\:hover\:animate-pulse:hover {
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .motion-safe\:hover\:animate-bounce:hover {
+    -webkit-animation: bounce 1s infinite;
+            animation: bounce 1s infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reduce\:animate-none {
+    -webkit-animation: none;
+            animation: none;
+  }
+
+  .motion-reduce\:animate-spin {
+    -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+  }
+
+  .motion-reduce\:animate-ping {
+    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .motion-reduce\:animate-pulse {
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .motion-reduce\:animate-bounce {
+    -webkit-animation: bounce 1s infinite;
+            animation: bounce 1s infinite;
+  }
+
+  .motion-reduce\:hover\:animate-none:hover {
+    -webkit-animation: none;
+            animation: none;
+  }
+
+  .motion-reduce\:hover\:animate-spin:hover {
+    -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+  }
+
+  .motion-reduce\:hover\:animate-ping:hover {
+    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .motion-reduce\:hover\:animate-pulse:hover {
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .motion-reduce\:hover\:animate-bounce:hover {
+    -webkit-animation: bounce 1s infinite;
+            animation: bounce 1s infinite;
+  }
 }
 
 .mix-blend-normal {
@@ -60023,6 +60156,10 @@ a{
     grid-template-columns: 10% 90%;
   }
 
+  .sm\:grid-cols-product {
+    grid-template-columns: 70% 30%;
+  }
+
   .sm\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -63692,6 +63829,135 @@ a{
   .sm\:animate-bounce {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .sm\:hover\:animate-none:hover {
+    -webkit-animation: none;
+            animation: none;
+  }
+
+  .sm\:hover\:animate-spin:hover {
+    -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+  }
+
+  .sm\:hover\:animate-ping:hover {
+    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .sm\:hover\:animate-pulse:hover {
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .sm\:hover\:animate-bounce:hover {
+    -webkit-animation: bounce 1s infinite;
+            animation: bounce 1s infinite;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .sm\:motion-safe\:animate-none {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .sm\:motion-safe\:animate-spin {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .sm\:motion-safe\:animate-ping {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .sm\:motion-safe\:animate-pulse {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .sm\:motion-safe\:animate-bounce {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+
+    .sm\:motion-safe\:hover\:animate-none:hover {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .sm\:motion-safe\:hover\:animate-spin:hover {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .sm\:motion-safe\:hover\:animate-ping:hover {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .sm\:motion-safe\:hover\:animate-pulse:hover {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .sm\:motion-safe\:hover\:animate-bounce:hover {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sm\:motion-reduce\:animate-none {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .sm\:motion-reduce\:animate-spin {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .sm\:motion-reduce\:animate-ping {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .sm\:motion-reduce\:animate-pulse {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .sm\:motion-reduce\:animate-bounce {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+
+    .sm\:motion-reduce\:hover\:animate-none:hover {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .sm\:motion-reduce\:hover\:animate-spin:hover {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .sm\:motion-reduce\:hover\:animate-ping:hover {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .sm\:motion-reduce\:hover\:animate-pulse:hover {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .sm\:motion-reduce\:hover\:animate-bounce:hover {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
   }
 
   .sm\:mix-blend-normal {
@@ -91772,6 +92038,10 @@ a{
     grid-template-columns: 10% 90%;
   }
 
+  .md\:grid-cols-product {
+    grid-template-columns: 70% 30%;
+  }
+
   .md\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -95441,6 +95711,135 @@ a{
   .md\:animate-bounce {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .md\:hover\:animate-none:hover {
+    -webkit-animation: none;
+            animation: none;
+  }
+
+  .md\:hover\:animate-spin:hover {
+    -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+  }
+
+  .md\:hover\:animate-ping:hover {
+    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .md\:hover\:animate-pulse:hover {
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .md\:hover\:animate-bounce:hover {
+    -webkit-animation: bounce 1s infinite;
+            animation: bounce 1s infinite;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .md\:motion-safe\:animate-none {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .md\:motion-safe\:animate-spin {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .md\:motion-safe\:animate-ping {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .md\:motion-safe\:animate-pulse {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .md\:motion-safe\:animate-bounce {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+
+    .md\:motion-safe\:hover\:animate-none:hover {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .md\:motion-safe\:hover\:animate-spin:hover {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .md\:motion-safe\:hover\:animate-ping:hover {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .md\:motion-safe\:hover\:animate-pulse:hover {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .md\:motion-safe\:hover\:animate-bounce:hover {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .md\:motion-reduce\:animate-none {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .md\:motion-reduce\:animate-spin {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .md\:motion-reduce\:animate-ping {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .md\:motion-reduce\:animate-pulse {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .md\:motion-reduce\:animate-bounce {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+
+    .md\:motion-reduce\:hover\:animate-none:hover {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .md\:motion-reduce\:hover\:animate-spin:hover {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .md\:motion-reduce\:hover\:animate-ping:hover {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .md\:motion-reduce\:hover\:animate-pulse:hover {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .md\:motion-reduce\:hover\:animate-bounce:hover {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
   }
 
   .md\:mix-blend-normal {
@@ -123521,6 +123920,10 @@ a{
     grid-template-columns: 10% 90%;
   }
 
+  .lg\:grid-cols-product {
+    grid-template-columns: 70% 30%;
+  }
+
   .lg\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -127190,6 +127593,135 @@ a{
   .lg\:animate-bounce {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .lg\:hover\:animate-none:hover {
+    -webkit-animation: none;
+            animation: none;
+  }
+
+  .lg\:hover\:animate-spin:hover {
+    -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+  }
+
+  .lg\:hover\:animate-ping:hover {
+    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .lg\:hover\:animate-pulse:hover {
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .lg\:hover\:animate-bounce:hover {
+    -webkit-animation: bounce 1s infinite;
+            animation: bounce 1s infinite;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .lg\:motion-safe\:animate-none {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .lg\:motion-safe\:animate-spin {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .lg\:motion-safe\:animate-ping {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .lg\:motion-safe\:animate-pulse {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .lg\:motion-safe\:animate-bounce {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+
+    .lg\:motion-safe\:hover\:animate-none:hover {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .lg\:motion-safe\:hover\:animate-spin:hover {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .lg\:motion-safe\:hover\:animate-ping:hover {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .lg\:motion-safe\:hover\:animate-pulse:hover {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .lg\:motion-safe\:hover\:animate-bounce:hover {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lg\:motion-reduce\:animate-none {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .lg\:motion-reduce\:animate-spin {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .lg\:motion-reduce\:animate-ping {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .lg\:motion-reduce\:animate-pulse {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .lg\:motion-reduce\:animate-bounce {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+
+    .lg\:motion-reduce\:hover\:animate-none:hover {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .lg\:motion-reduce\:hover\:animate-spin:hover {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .lg\:motion-reduce\:hover\:animate-ping:hover {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .lg\:motion-reduce\:hover\:animate-pulse:hover {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .lg\:motion-reduce\:hover\:animate-bounce:hover {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
   }
 
   .lg\:mix-blend-normal {
@@ -155270,6 +155802,10 @@ a{
     grid-template-columns: 10% 90%;
   }
 
+  .xl\:grid-cols-product {
+    grid-template-columns: 70% 30%;
+  }
+
   .xl\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -158939,6 +159475,135 @@ a{
   .xl\:animate-bounce {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .xl\:hover\:animate-none:hover {
+    -webkit-animation: none;
+            animation: none;
+  }
+
+  .xl\:hover\:animate-spin:hover {
+    -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+  }
+
+  .xl\:hover\:animate-ping:hover {
+    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .xl\:hover\:animate-pulse:hover {
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .xl\:hover\:animate-bounce:hover {
+    -webkit-animation: bounce 1s infinite;
+            animation: bounce 1s infinite;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .xl\:motion-safe\:animate-none {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .xl\:motion-safe\:animate-spin {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .xl\:motion-safe\:animate-ping {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .xl\:motion-safe\:animate-pulse {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .xl\:motion-safe\:animate-bounce {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+
+    .xl\:motion-safe\:hover\:animate-none:hover {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .xl\:motion-safe\:hover\:animate-spin:hover {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .xl\:motion-safe\:hover\:animate-ping:hover {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .xl\:motion-safe\:hover\:animate-pulse:hover {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .xl\:motion-safe\:hover\:animate-bounce:hover {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .xl\:motion-reduce\:animate-none {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .xl\:motion-reduce\:animate-spin {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .xl\:motion-reduce\:animate-ping {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .xl\:motion-reduce\:animate-pulse {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .xl\:motion-reduce\:animate-bounce {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+
+    .xl\:motion-reduce\:hover\:animate-none:hover {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .xl\:motion-reduce\:hover\:animate-spin:hover {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .xl\:motion-reduce\:hover\:animate-ping:hover {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .xl\:motion-reduce\:hover\:animate-pulse:hover {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .xl\:motion-reduce\:hover\:animate-bounce:hover {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
   }
 
   .xl\:mix-blend-normal {
@@ -187019,6 +187684,10 @@ a{
     grid-template-columns: 10% 90%;
   }
 
+  .\32xl\:grid-cols-product {
+    grid-template-columns: 70% 30%;
+  }
+
   .\32xl\:auto-cols-auto {
     grid-auto-columns: auto;
   }
@@ -190688,6 +191357,135 @@ a{
   .\32xl\:animate-bounce {
     -webkit-animation: bounce 1s infinite;
             animation: bounce 1s infinite;
+  }
+
+  .\32xl\:hover\:animate-none:hover {
+    -webkit-animation: none;
+            animation: none;
+  }
+
+  .\32xl\:hover\:animate-spin:hover {
+    -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+  }
+
+  .\32xl\:hover\:animate-ping:hover {
+    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .\32xl\:hover\:animate-pulse:hover {
+    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .\32xl\:hover\:animate-bounce:hover {
+    -webkit-animation: bounce 1s infinite;
+            animation: bounce 1s infinite;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .\32xl\:motion-safe\:animate-none {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .\32xl\:motion-safe\:animate-spin {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .\32xl\:motion-safe\:animate-ping {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .\32xl\:motion-safe\:animate-pulse {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .\32xl\:motion-safe\:animate-bounce {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+
+    .\32xl\:motion-safe\:hover\:animate-none:hover {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .\32xl\:motion-safe\:hover\:animate-spin:hover {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .\32xl\:motion-safe\:hover\:animate-ping:hover {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .\32xl\:motion-safe\:hover\:animate-pulse:hover {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .\32xl\:motion-safe\:hover\:animate-bounce:hover {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .\32xl\:motion-reduce\:animate-none {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .\32xl\:motion-reduce\:animate-spin {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .\32xl\:motion-reduce\:animate-ping {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .\32xl\:motion-reduce\:animate-pulse {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .\32xl\:motion-reduce\:animate-bounce {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
+
+    .\32xl\:motion-reduce\:hover\:animate-none:hover {
+      -webkit-animation: none;
+              animation: none;
+    }
+
+    .\32xl\:motion-reduce\:hover\:animate-spin:hover {
+      -webkit-animation: spin 1s linear infinite;
+              animation: spin 1s linear infinite;
+    }
+
+    .\32xl\:motion-reduce\:hover\:animate-ping:hover {
+      -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+              animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .\32xl\:motion-reduce\:hover\:animate-pulse:hover {
+      -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+              animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .\32xl\:motion-reduce\:hover\:animate-bounce:hover {
+      -webkit-animation: bounce 1s infinite;
+              animation: bounce 1s infinite;
+    }
   }
 
   .\32xl\:mix-blend-normal {
