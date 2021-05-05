@@ -40,6 +40,7 @@ class CategoryCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('name');
+        CRUD::column('products')->type('relationship');
         CRUD::column('image')->type('image');
 
         /**
@@ -60,6 +61,8 @@ class CategoryCrudController extends CrudController
         CRUD::setValidation(CategoryRequest::class);
 
         CRUD::field('name');
+        CRUD::field('products')->type('relationship');
+
 //        CRUD::field('image')->type('image');
         // image
         $this->crud->addField([

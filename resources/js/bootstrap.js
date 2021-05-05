@@ -1,4 +1,19 @@
 window._ = require('lodash');
+import VueRouter from "vue-router";
+import PortalVue from 'portal-vue';
+
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+try {
+    window.Popper = require('popper.js').default;
+    window.$ = window.jQuery = require('jquery');
+
+    require('bootstrap');
+} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -7,6 +22,10 @@ window._ = require('lodash');
  */
 
 window.axios = require('axios');
+
+window.Vue = require('vue').default;
+Vue.use(VueRouter);
+Vue.use(PortalVue);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
