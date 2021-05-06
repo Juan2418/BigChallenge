@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         Ingredient::factory()->count(10)->create();
-        Category::factory()->count(5)->create();
+        Category::factory()->has(Product::factory()->has(Ingredient::factory()->count(5))->count(5))->count(5)->create();
         Product::factory()->has(Ingredient::factory()->count(5))->count(10)->create();
         Order::factory()->has(Product::factory()->count(5))->count(15)->create();
     }
