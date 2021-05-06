@@ -28093,7 +28093,11 @@ video {
 }
 
 .grid-cols-main {
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 15% 85%;
+}
+
+.grid-cols-category-product {
+  grid-template-columns: 40% 60%;
 }
 
 .grid-cols-product {
@@ -32609,6 +32613,10 @@ video {
 
 .snap-y {
   --scroll-snap-direction: y;
+}
+
+.snap-x {
+  --scroll-snap-direction: x;
 }
 
 .snap-mandatory {
@@ -60152,7 +60160,11 @@ a{
   }
 
   .sm\:grid-cols-main {
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 15% 85%;
+  }
+
+  .sm\:grid-cols-category-product {
+    grid-template-columns: 40% 60%;
   }
 
   .sm\:grid-cols-product {
@@ -92034,7 +92046,11 @@ a{
   }
 
   .md\:grid-cols-main {
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 15% 85%;
+  }
+
+  .md\:grid-cols-category-product {
+    grid-template-columns: 40% 60%;
   }
 
   .md\:grid-cols-product {
@@ -123916,7 +123932,11 @@ a{
   }
 
   .lg\:grid-cols-main {
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 15% 85%;
+  }
+
+  .lg\:grid-cols-category-product {
+    grid-template-columns: 40% 60%;
   }
 
   .lg\:grid-cols-product {
@@ -155798,7 +155818,11 @@ a{
   }
 
   .xl\:grid-cols-main {
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 15% 85%;
+  }
+
+  .xl\:grid-cols-category-product {
+    grid-template-columns: 40% 60%;
   }
 
   .xl\:grid-cols-product {
@@ -187680,7 +187704,11 @@ a{
   }
 
   .\32xl\:grid-cols-main {
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 15% 85%;
+  }
+
+  .\32xl\:grid-cols-category-product {
+    grid-template-columns: 40% 60%;
   }
 
   .\32xl\:grid-cols-product {

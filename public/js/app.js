@@ -1853,10 +1853,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1894,7 +1890,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
 //
 //
 //
@@ -2018,6 +2013,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_ProductList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/ProductList */ "./resources/js/components/ProductList.vue");
+//
 //
 //
 //
@@ -38694,8 +38690,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", [
-    _c("section", { staticClass: "flex m-2" }, [
+  return _c(
+    "section",
+    { staticClass: "flex flex-row m-2 justify-center h-full text-xl " },
+    [
+      _c("img", {
+        attrs: { src: "icons/add_black.svg" },
+        on: {
+          click: function($event) {
+            return _vm.add()
+          }
+        }
+      }),
+      _vm._v(" "),
       _c("input", {
         directives: [
           {
@@ -38705,7 +38712,8 @@ var render = function() {
             expression: "currentValue"
           }
         ],
-        staticClass: "text-right shadow",
+        staticClass:
+          "text-center font-weight-bolder mx-3 shadow bg-gray-200 w-1/4",
         attrs: { type: "number", min: "0" },
         domProps: { value: _vm.currentValue },
         on: {
@@ -38718,27 +38726,16 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("section", { staticClass: "flex flex-row" }, [
-        _c("img", {
-          attrs: { src: "icons/add_black.svg" },
-          on: {
-            click: function($event) {
-              return _vm.add()
-            }
+      _c("img", {
+        attrs: { src: "icons/remove_black.svg" },
+        on: {
+          click: function($event) {
+            return _vm.substract()
           }
-        }),
-        _vm._v(" "),
-        _c("img", {
-          attrs: { src: "icons/remove_black.svg" },
-          on: {
-            click: function($event) {
-              return _vm.substract()
-            }
-          }
-        })
-      ])
-    ])
-  ])
+        }
+      })
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38766,7 +38763,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "m-6 ",
+      staticClass: "m-1 md:m-6 flex",
       on: {
         click: function($event) {
           return _vm.setCurrentProductToAdd()
@@ -38778,7 +38775,7 @@ var render = function() {
         "div",
         {
           staticClass:
-            "max-w-xs\n                bg-white\n                flex flex-col items-center\n                rounded overflow-hidden shadow-lg\n                transform transition duration-500 hover:scale-110"
+            "md:max-w-xs\n                bg-white\n                flex flex-col items-center\n                rounded overflow-hidden shadow-lg\n                transform transition duration-500 hover:scale-110"
         },
         [
           _c("img", {
@@ -38839,7 +38836,7 @@ var render = function() {
     "Main",
     {
       staticClass:
-        "grid sm:grid-cols-1 sm:grid-col md:grid-cols-product p-5 md:text-2xl layout-product shadow-md"
+        "grid sm:grid-cols-1 sm:grid-col md:grid-cols-product\n            p-5 md:text-2xl layout-product\n            shadow-md overflow-y-scroll h-screen"
     },
     [
       _c("div", [
@@ -38850,7 +38847,9 @@ var render = function() {
         _c("section", { staticClass: "py-3" }, [
           _c("p", [
             _vm._v(
-              "\n                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda debitis doloremque eos facere,\n                facilis, maiores molestiae non, officiis saepe sequi soluta suscipit tempora tempore unde vitae.\n                Fuga omnis soluta voluptate?\n            "
+              "\n                " +
+                _vm._s(_vm.product.description) +
+                "\n            "
             )
           ])
         ]),
@@ -38918,7 +38917,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "section",
-          { staticClass: "py-7 grid quantity-section" },
+          { staticClass: "py-7 grid quantity-section items-center" },
           [
             _c("label", { attrs: { for: "quantity" } }, [
               _vm._v("Select how many "),
@@ -38975,51 +38974,60 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.categoriesLoaded
-    ? _c("Main", { staticClass: "grid grid-cols-2 categories-grid" }, [
-        _c(
-          "section",
-          {
-            staticClass:
-              "flex flex-col justify-content-center gap-4 absolute w-1/3 h-screen\n                     overflow-y-scroll snap snap-y snap-mandatory"
-          },
-          _vm._l(_vm.categories, function(category, index) {
-            return _c(
-              "div",
-              {
-                key: index,
-                class: _vm.cardCarouselStyles() + _vm.selectBGColor(index),
-                on: {
-                  click: function($event) {
-                    return _vm.selectCategory(category)
+    ? _c(
+        "Main",
+        {
+          staticClass:
+            "grid grid-cols-category-product md:grid-cols-2 categories-grid"
+        },
+        [
+          _c(
+            "section",
+            {
+              staticClass:
+                "flex flex-col justify-content-center gap-4 absolute w-1/3 h-screen\n                     overflow-y-scroll\n                     snap snap-y snap-mandatory"
+            },
+            _vm._l(_vm.categories, function(category, index) {
+              return _c(
+                "div",
+                {
+                  key: index,
+                  class: _vm.cardCarouselStyles() + _vm.selectBGColor(index),
+                  on: {
+                    click: function($event) {
+                      return _vm.selectCategory(category)
+                    }
                   }
-                }
-              },
-              [
-                _c("img", {
-                  attrs: {
-                    src: _vm.getCategoryImage(category),
-                    alt: "Category image",
-                    width: "100px"
-                  }
-                }),
-                _vm._v(" "),
-                _c("hr", { staticClass: "mt-3" }),
-                _vm._v("\n            " + _vm._s(category.name) + "\n        ")
-              ]
-            )
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _c(
-          "section",
-          { staticClass: "product-list overflow-y-scroll h-screen" },
-          _vm._l(_vm.currentCategory.products, function(product, i) {
-            return _c("ProductList", { key: i, attrs: { product: product } })
-          }),
-          1
-        )
-      ])
+                },
+                [
+                  _c("img", {
+                    attrs: {
+                      src: _vm.getCategoryImage(category),
+                      alt: "Category image",
+                      width: "100px"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("hr", { staticClass: "mt-3" }),
+                  _vm._v(
+                    "\n            " + _vm._s(category.name) + "\n        "
+                  )
+                ]
+              )
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "section",
+            { staticClass: "product-list overflow-y-scroll h-screen" },
+            _vm._l(_vm.currentCategory.products, function(product, i) {
+              return _c("ProductList", { key: i, attrs: { product: product } })
+            }),
+            1
+          )
+        ]
+      )
     : _vm._e()
 }
 var staticRenderFns = []

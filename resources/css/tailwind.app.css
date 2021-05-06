@@ -12,6 +12,10 @@
     .snap-y {
         --scroll-snap-direction: y;
     }
+
+    .snap-x {
+        --scroll-snap-direction: x;
+    }
     .snap-mandatory {
         --scroll-snap-constraint: mandatory;
     }

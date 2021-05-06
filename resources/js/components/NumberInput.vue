@@ -1,13 +1,9 @@
 <template>
-    <section>
-        <section class="flex m-2">
-            <input type="number" v-model="currentValue" min="0" class="text-right shadow">
-            <section class="flex flex-row">
-                <img :src="'icons/add_black.svg'" @click="add()"/>
-                <img :src="'icons/remove_black.svg'" @click="substract()"/>
-            </section>
+        <section class="flex flex-row m-2 justify-center h-full text-xl ">
+            <img :src="'icons/add_black.svg'" class="" @click="add()"/>
+            <input type="number" v-model="currentValue" min="0" class="text-center font-weight-bolder mx-3 shadow bg-gray-200 w-1/4">
+            <img :src="'icons/remove_black.svg'" @click="substract()"/>
         </section>
-    </section>
 </template>
 
 <script>
