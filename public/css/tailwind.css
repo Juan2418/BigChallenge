@@ -32620,7 +32620,6 @@ video {
 }
 
 a{
-  max-width: 1rem;
 }
 
 @media (min-width: 640px) {

@@ -1,7 +1,8 @@
 <template>
-    <div class="m-6" @click="setCurrentProductToAdd()">
+    <div class="m-6 " @click="setCurrentProductToAdd()">
         <!--Card 1-->
         <div class="max-w-xs
+                    bg-white
                     flex flex-col items-center
                     rounded overflow-hidden shadow-lg
                     transform transition duration-500 hover:scale-110">
