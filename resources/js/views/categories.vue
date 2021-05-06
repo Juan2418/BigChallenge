@@ -11,7 +11,7 @@
                 {{ category.name }}
             </div>
         </section>
-        <section class="product-list">
+        <section class="product-list overflow-y-scroll h-screen">
             <ProductList v-for="(product, i) in currentCategory.products" :key="i" v-bind:product="product"></ProductList>
         </section>
     </Main>

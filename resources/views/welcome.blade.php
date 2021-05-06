@@ -35,8 +35,10 @@
     @endif
 
     <div id="app"
-         class="grid grid-cols-2 grid-cols-main">
-        <router-link to="/" class="w-25">Home</router-link>
+         class="grid grid-cols-2 grid-cols-main bg-gray-200">
+        <nav class="h-screen flex flex-col items-center text-white bg-primary border-r-2">
+            <router-link to="/" >Home</router-link>
+        </nav>
         <router-view></router-view>
         <portal-target name="productList"></portal-target>
     </div>
