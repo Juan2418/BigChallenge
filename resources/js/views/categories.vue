@@ -1,7 +1,8 @@
 <template>
-    <Main v-if="categoriesLoaded" class="grid grid-cols-2 categories-grid">
+    <Main v-if="categoriesLoaded" class="grid grid-cols-category-product md:grid-cols-2 categories-grid">
         <section class="flex flex-col justify-content-center gap-4 absolute w-1/3 h-screen
-                         overflow-y-scroll snap snap-y snap-mandatory">
+                         overflow-y-scroll
+                         snap snap-y snap-mandatory">
             <div v-for="(category, index) in categories"
                  :class="cardCarouselStyles() + selectBGColor(index)"
                  :key="index"

@@ -15,7 +15,8 @@ module.exports = {
             },
             gridTemplateColumns: {
                 // Complex site-specific column configuration
-                'main': '10% 90%',
+                'main': '15% 85%',
+                'category-product': '40% 60%',
                 'product': '70% 30%'
             },
             minHeight: {

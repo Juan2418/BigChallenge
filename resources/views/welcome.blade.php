@@ -36,7 +36,7 @@
 
     <div id="app"
          class="grid grid-cols-2 grid-cols-main bg-gray-200">
-        <nav class="h-screen flex flex-col items-center text-white bg-primary border-r-2">
+        <nav class="h-screen flex flex-col items-center text-white bg-primary border-r-2 py-3">
             <router-link to="/" >Home</router-link>
         </nav>
         <router-view></router-view>

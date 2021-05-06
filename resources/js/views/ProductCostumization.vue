@@ -1,14 +1,14 @@
 <template>
-    <Main class="grid sm:grid-cols-1 sm:grid-col md:grid-cols-product p-5 md:text-2xl layout-product shadow-md">
+    <Main class="grid sm:grid-cols-1 sm:grid-col md:grid-cols-product
+                p-5 md:text-2xl layout-product
+                shadow-md overflow-y-scroll h-screen">
         <div>
             <section class="text-4xl py-4">
                 {{ product.name }}
             </section>
             <section class="py-3">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda debitis doloremque eos facere,
-                    facilis, maiores molestiae non, officiis saepe sequi soluta suscipit tempora tempore unde vitae.
-                    Fuga omnis soluta voluptate?
+                    {{product.description}}
                 </p>
             </section>
             <section>
@@ -19,7 +19,7 @@
                     <label for="i">{{ ingredient.name }}</label><br>
                 </div>
             </section>
-            <section class="py-7 grid quantity-section">
+            <section class="py-7 grid quantity-section items-center">
                 <label for="quantity">Select how many <span class="font-bold quantity-label sm:py-2">{{product.name}}</span> you want:</label>
                 <NumberInput id="quantity" :value="quantity" @add="increaseQuantity()" @substract="decreaseQuantity" ></NumberInput>
             </section>
