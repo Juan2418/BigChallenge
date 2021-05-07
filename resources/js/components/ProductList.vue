@@ -1,14 +1,14 @@
 <template>
-    <div class="m-1 md:m-6 flex" @click="setCurrentProductToAdd()">
+    <div class="flex m-1 md:m-6 card" @click="setCurrentProductToAdd()">
         <!--Card 1-->
         <div class="md:max-w-xs
                     bg-white
                     flex flex-col items-center
                     rounded overflow-hidden shadow-lg
                     transform transition duration-500 hover:scale-110">
-            <img class="w-1/2" :src="'icons/warning_black.svg'" :alt="`${product.name} Image`">
-            <div class="font-bold text-xl mb-2">{{ product.name }}</div>
-            <p class="py-2 px-4 w-full text-gray-700 text-base max-h-16 justify-self-start truncate">
+            <img class="md:w-1/2" :src="'icons/warning_black.svg'" :alt="`${product.name} Image`">
+            <div class="font-bold truncate text-xl px-2 mb-2">{{ product.name }}</div>
+            <p class="py-2 md:px-4 w-full text-gray-700 text-base max-h-16 justify-self-start truncate">
                 {{ product.description }}
             </p>
         </div>
@@ -33,5 +33,7 @@ export default {
 </script>
 
 <style scoped>
-
+    .card{
+        height: min-content;
+    }
 </style>
