@@ -37,7 +37,10 @@
     <div id="app"
          class="grid grid-cols-2 grid-cols-main bg-gray-200">
         <nav class="h-screen flex flex-col items-center text-white bg-primary border-r-2 py-3">
-            <router-link to="/" >Home</router-link>
+            <router-link to="/" ><a><img src="{{asset("icons/home_white.svg")}}" alt="Home" width="100px"></a></router-link>
+{{--            <img v-if="window.loa" v-for="product in Store.productsToOrder" :src="product.image" :alt="product.name"--}}
+{{--                 class="rounded-circle"--}}
+{{--            >--}}
         </nav>
         <router-view></router-view>
         <portal-target name="productList"></portal-target>
