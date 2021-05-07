@@ -1972,6 +1972,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -1999,6 +2003,23 @@ __webpack_require__.r(__webpack_exports__);
     },
     decreaseQuantity: function decreaseQuantity(newValue) {
       this.quantity = newValue;
+    },
+    addToCart: function addToCart() {
+      if (this.quantity > 0) {
+        var productToAdd = {
+          id: this.product.id,
+          name: this.product.name,
+          image: this.product.image,
+          description: this.product.description,
+          ingredients: this.ingredients.filter(function (item) {
+            return item.checked;
+          }),
+          quantity: this.quantity
+        };
+        Store.productsToOrder.push(productToAdd);
+      }
+
+      SPA.$router.push('/');
     }
   }
 });
@@ -2112,7 +2133,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Store = new Vue({
   data: {
-    productToAdd: null
+    productToAdd: null,
+    productsToOrder: []
   }
 });
 window.SPA = new Vue({
@@ -38990,8 +39012,11 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "btn btn-primary w-full justify-self-center" },
-          [_vm._v("Add to cart")]
+          {
+            staticClass: "btn btn-primary w-full justify-self-center",
+            on: { click: _vm.addToCart }
+          },
+          [_vm._v("\n            Add to cart\n        ")]
         )
       ]),
       _vm._v(" "),

@@ -26,7 +26,11 @@
                 <NumberInput id="quantity" :value="quantity" @add="increaseQuantity()"
                              @substract="decreaseQuantity"></NumberInput>
             </section>
-            <button class="btn btn-primary w-full justify-self-center">Add to cart</button>
+            <button class="btn btn-primary w-full justify-self-center"
+                    @click="addToCart"
+            >
+                Add to cart
+            </button>
         </div>
         <div class="md:h-screen image-product">
             <img :src="product.image" :alt="`${product.name} image`" class="w-full bg-black">
@@ -59,6 +63,20 @@ export default {
         },
         decreaseQuantity(newValue) {
             this.quantity = newValue;
+        },
+        addToCart() {
+            if (this.quantity > 0) {
+                let productToAdd = {
+                    id: this.product.id,
+                    name: this.product.name,
+                    image: this.product.image,
+                    description: this.product.description,
+                    ingredients: this.ingredients.filter(item => item.checked),
+                    quantity: this.quantity
+                };
+                Store.productsToOrder.push(productToAdd);
+            }
+            SPA.$router.push('/');
         }
     }
 }
