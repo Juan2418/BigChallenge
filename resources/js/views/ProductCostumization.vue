@@ -8,7 +8,7 @@
             </section>
             <section class="py-3">
                 <p>
-                    {{product.description}}
+                    {{ product.description }}
                 </p>
             </section>
             <section>
@@ -20,9 +20,13 @@
                 </div>
             </section>
             <section class="py-7 grid quantity-section items-center">
-                <label for="quantity">Select how many <span class="font-bold quantity-label sm:py-2">{{product.name}}</span> you want:</label>
-                <NumberInput id="quantity" :value="quantity" @add="increaseQuantity()" @substract="decreaseQuantity" ></NumberInput>
+                <label for="quantity">
+                    Select how many <span class="font-bold quantity-label sm:py-2">{{ product.name }}</span> you want:
+                </label>
+                <NumberInput id="quantity" :value="quantity" @add="increaseQuantity()"
+                             @substract="decreaseQuantity"></NumberInput>
             </section>
+            <button class="btn btn-primary w-full justify-self-center">Add to cart</button>
         </div>
         <div class="md:h-screen image-product">
             <img :src="product.image" :alt="`${product.name} image`" class="w-full bg-black">
@@ -32,6 +36,7 @@
 
 <script>
 import NumberInput from "../components/NumberInput";
+
 export default {
     components: {NumberInput},
     data() {
@@ -80,6 +85,7 @@ export default {
     .layout-product {
         grid-template-areas: "b" "a";
     }
+
     .quantity-section {
         grid-template-areas: "a" "b";
     }

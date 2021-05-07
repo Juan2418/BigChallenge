@@ -35,7 +35,8 @@ module.exports = {
     variants: {
         extend: {
             scale: ['active', 'group-hover'],
-            animation: ['responsive', 'motion-safe', 'motion-reduce', 'hover']
+            animation: ['responsive', 'motion-safe', 'motion-reduce', 'hover'],
+            stroke: ['hover', 'focus'],
         },
     },
     plugins: [],

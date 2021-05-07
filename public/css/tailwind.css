@@ -24464,6 +24464,14 @@ video {
   stroke: currentColor;
 }
 
+.hover\:stroke-current:hover {
+  stroke: currentColor;
+}
+
+.focus\:stroke-current:focus {
+  stroke: currentColor;
+}
+
 .stroke-0 {
   stroke-width: 0;
 }
@@ -32627,7 +32635,26 @@ video {
   scroll-snap-align: start;
 }
 
-a{
+.btn {
+  border-radius: 0.25rem;
+  font-weight: 700;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgba(28, 33, 29, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.btn-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(203, 176, 7, var(--tw-bg-opacity));
 }
 
 @media (min-width: 640px) {
@@ -56528,6 +56555,14 @@ a{
   }
 
   .sm\:stroke-current {
+    stroke: currentColor;
+  }
+
+  .sm\:hover\:stroke-current:hover {
+    stroke: currentColor;
+  }
+
+  .sm\:focus\:stroke-current:focus {
     stroke: currentColor;
   }
 
@@ -88417,6 +88452,14 @@ a{
     stroke: currentColor;
   }
 
+  .md\:hover\:stroke-current:hover {
+    stroke: currentColor;
+  }
+
+  .md\:focus\:stroke-current:focus {
+    stroke: currentColor;
+  }
+
   .md\:stroke-0 {
     stroke-width: 0;
   }
@@ -120300,6 +120343,14 @@ a{
   }
 
   .lg\:stroke-current {
+    stroke: currentColor;
+  }
+
+  .lg\:hover\:stroke-current:hover {
+    stroke: currentColor;
+  }
+
+  .lg\:focus\:stroke-current:focus {
     stroke: currentColor;
   }
 
@@ -152189,6 +152240,14 @@ a{
     stroke: currentColor;
   }
 
+  .xl\:hover\:stroke-current:hover {
+    stroke: currentColor;
+  }
+
+  .xl\:focus\:stroke-current:focus {
+    stroke: currentColor;
+  }
+
   .xl\:stroke-0 {
     stroke-width: 0;
   }
@@ -184072,6 +184131,14 @@ a{
   }
 
   .\32xl\:stroke-current {
+    stroke: currentColor;
+  }
+
+  .\32xl\:hover\:stroke-current:hover {
+    stroke: currentColor;
+  }
+
+  .\32xl\:focus\:stroke-current:focus {
     stroke: currentColor;
   }
 
