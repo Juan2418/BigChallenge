@@ -34,3 +34,7 @@
 .btn-primary:hover {
     @apply bg-secondary;
 }
+
+.scale-on-hover {
+    @apply transform transition duration-500 hover:scale-110
+}

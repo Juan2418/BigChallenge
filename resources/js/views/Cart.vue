@@ -4,6 +4,7 @@
         <section class="container h-screen overflow-y-scroll">
             <p class="font-bold text-2xl my-4">Your products</p>
             <product-list-horizontal :products="products"/>
+            <button class="btn btn-primary w-full justify-self-center">Order</button>
         </section>
     </Main>
 </template>
