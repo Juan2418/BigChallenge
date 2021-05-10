@@ -35,8 +35,8 @@
                     Add to cart
                 </button>
             </div>
-            <div class="md:h-screen image-product">
-                <img :src="product.image" :alt="`${product.name} image`" class="w-full bg-black">
+            <div class="md:h-screen flex justify-center image-product ">
+                <img :src="product.image" :alt="`${product.name} image`" class="w-full h-content md:w-1/2 bg-black">
             </div>
         </section>
     </Main>

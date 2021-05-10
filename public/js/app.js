@@ -39327,15 +39327,19 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "md:h-screen image-product" }, [
-            _c("img", {
-              staticClass: "w-full bg-black",
-              attrs: {
-                src: _vm.product.image,
-                alt: _vm.product.name + " image"
-              }
-            })
-          ])
+          _c(
+            "div",
+            { staticClass: "md:h-screen flex justify-center image-product " },
+            [
+              _c("img", {
+                staticClass: "w-full h-content md:w-1/2 bg-black",
+                attrs: {
+                  src: _vm.product.image,
+                  alt: _vm.product.name + " image"
+                }
+              })
+            ]
+          )
         ]
       )
     ],
