@@ -15,11 +15,7 @@
                 </section>
                 <section>
                     <h1 class="font-bold py-3">Customize your product:</h1>
-                    <div v-for="(ingredient, i) in ingredients">
-                        <input type="checkbox" :id="i" :name="ingredient.name" :value="ingredient.name"
-                               v-model="ingredient.checked">
-                        <label for="i">{{ ingredient.name }}</label><br>
-                    </div>
+                    <checkbox :ingredients="ingredients"/>
                 </section>
                 <section class="py-7 grid quantity-section items-center">
                     <label for="quantity">
@@ -45,9 +41,10 @@
 <script>
 import NumberInput from "../components/NumberInput";
 import NavBar from "../components/NavBar";
+import Checkbox from "../components/Checkbox";
 
 export default {
-    components: {NavBar, NumberInput},
+    components: {Checkbox, NavBar, NumberInput},
     data() {
         return {
             product: Store.productToAdd,
