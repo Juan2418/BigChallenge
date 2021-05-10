@@ -38980,16 +38980,17 @@ var render = function() {
     },
     [
       _c("router-link", { attrs: { to: "/" } }, [
-        _c("a", [
+        _c("a", { staticClass: "w-full" }, [
           _c("img", {
-            attrs: { src: "icons/home_white.svg", alt: "Home", width: "100px" }
+            staticClass: "w-12 md:w-16",
+            attrs: { src: "icons/home_white.svg", alt: "Home" }
           })
         ])
       ]),
       _vm._v(" "),
       _vm._l(_vm.productsToOrder, function(product) {
         return _c("img", {
-          staticClass: "rounded-circle",
+          staticClass: "rounded-full md:p-2 w-2/3 md:w-1/4 md:border-4",
           attrs: { src: product.image, alt: product.name }
         })
       })
