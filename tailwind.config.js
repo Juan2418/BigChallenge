@@ -13,6 +13,9 @@ module.exports = {
                 },
 
             },
+            height: {
+                'content': 'min-content',
+            },
             gridTemplateColumns: {
                 // Complex site-specific column configuration
                 'main': '15% 85%',
