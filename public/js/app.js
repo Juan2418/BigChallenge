@@ -1884,6 +1884,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'nav-bar',
   data: function data() {
@@ -39411,6 +39412,11 @@ var render = function() {
           })
         ])
       ]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "w-12 md:w-16 my-4",
+        attrs: { src: "icons/shopping_cart_white.svg", alt: "Shopping cart" }
+      }),
       _vm._v(" "),
       _vm._l(_vm.productsToOrder, function(product) {
         return _c("img", {
