@@ -4,6 +4,7 @@
         </router-link>
         <img v-for="product in productsToOrder" :src="product.image" :alt="product.name"
              class="rounded-full md:p-2 w-2/3 md:w-1/4 md:border-4"
+             @click="modifyProduct(product)"
         >
     </nav>
 </template>
@@ -14,6 +15,11 @@ export default {
         return {
             productsToOrder: Store.productsToOrder
         }
-    }
+    },
+    methods: {
+        modifyProduct(product) {
+
+        }
+    },
 }
 </script>

@@ -32,7 +32,7 @@ export default {
     },
 
     mounted() {
-        axios.get('/categories').then(({data}) => {
+        axios.get('/api/categories').then(({data}) => {
             this.categories = data;
             this.currentCategory = this.categories[0];
             this.categoriesLoaded = true;
