@@ -18,7 +18,8 @@ export default {
     },
     methods: {
         modifyProduct(product) {
-
+            Store.productToModify = product;
+            SPA.$router.push('/modify');
         }
     },
 }

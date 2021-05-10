@@ -29,7 +29,8 @@ import router from './routes.js';
 window.Store = new Vue({
     data: {
         productToAdd: null,
-        productsToOrder: []
+        productToModify: null,
+        productsToOrder: [],
     }
 });
 
