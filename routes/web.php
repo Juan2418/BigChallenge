@@ -18,6 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/categories', function() {
-    return Category::with('products.ingredients')->latest()->get();
+Route::fallback(function () {
+    return redirect('/');
 });
