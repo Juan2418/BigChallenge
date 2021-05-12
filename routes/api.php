@@ -22,3 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/categories', function() {
     return Category::with('products.ingredients')->latest()->get();
 });
+
+Route::post('/order', 'App\Http\Controllers\OrderController@store');

@@ -38,7 +38,6 @@ class OrderController extends Controller
     {
         $orderInfo = request()->all();
 
-
         $newOrder = Order::create(["amount" => 100, "isPaid" => true]);
 
         foreach ($orderInfo as $product) {
