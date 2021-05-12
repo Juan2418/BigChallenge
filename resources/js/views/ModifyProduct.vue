@@ -17,6 +17,9 @@
                     <h1 class="font-bold py-3">Customize your product:</h1>
                     <checkbox :ingredients="ingredients"/>
                 </section>
+                <section class="py-4">
+                    <p>Product Cost: <span class="font-bold">{{ totalCost }}</span></p>
+                </section>
                 <section class="py-7 grid quantity-section items-center">
                     <label for="quantity">
                         Select how many <span class="font-bold quantity-label sm:py-2">{{ product.name }}</span> you
@@ -55,6 +58,11 @@ export default {
             quantity: Store.productToModify.quantity
         }
     },
+    computed: {
+        totalCost() {
+            return this.product.cost * this.quantity;
+        }
+    },
     mounted() {
         let ingredients = this.product.ingredients;
         for (let i = 0; i < ingredients.length; i++) {
@@ -75,6 +83,7 @@ export default {
                     id: this.product.id,
                     name: this.product.name,
                     image: this.product.image,
+                    cost: this.totalCost,
                     description: this.product.description,
                     ingredients: this.ingredients.filter(item => item.checked),
                     quantity: this.quantity

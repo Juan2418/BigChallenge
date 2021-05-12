@@ -17,8 +17,8 @@
                     <h1 class="font-bold py-3">Customize your product:</h1>
                     <checkbox :ingredients="ingredients"/>
                 </section>
-                <section>
-                    <p>Product Cost: <span>{{ totalCost }}</span></p>
+                <section class="py-4">
+                    <p>Product Cost: <span class="font-bold">{{ totalCost }}</span></p>
                 </section>
                 <section class="py-7 grid quantity-section items-center">
                     <label for="quantity">
@@ -80,6 +80,7 @@ export default {
                     id: this.product.id,
                     name: this.product.name,
                     image: this.product.image,
+                    cost: this.totalCost,
                     description: this.product.description,
                     ingredients: this.ingredients.filter(item => item.checked),
                     quantity: this.quantity

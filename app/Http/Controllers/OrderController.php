@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Faker\Core\Number;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -38,11 +39,11 @@ class OrderController extends Controller
     {
         $orderInfo = request()->all();
 
-        $newOrder = Order::create(["amount" => 100, "isPaid" => true]);
+        $amount = $this->getAmountFromRequest($orderInfo);
 
-        foreach ($orderInfo as $product) {
-            $this->attachProductToOrder($newOrder, $product);
-        }
+        $newOrder = Order::create(["amount" => $amount, "isPaid" => true]);
+
+        $this->attachProductsToOrder($orderInfo, $newOrder);
 
         dd($newOrder);
     }
@@ -99,5 +100,28 @@ class OrderController extends Controller
     private function attachProductToOrder($newOrder, $product): void
     {
         $newOrder->products()->attach($product['id'], ["quantity" => $product['quantity']]);
+    }
+
+    /**
+     * @param array $orderInfo
+     */
+    private function getAmountFromRequest(array $orderInfo): int
+    {
+        $amount = 0;
+        foreach ($orderInfo as $product) {
+            $amount += $product['cost'];
+        }
+        return $amount;
+    }
+
+    /**
+     * @param array $orderInfo
+     * @param $newOrder
+     */
+    private function attachProductsToOrder(array $orderInfo, $newOrder): void
+    {
+        foreach ($orderInfo as $product) {
+            $this->attachProductToOrder($newOrder, $product);
+        }
     }
 }

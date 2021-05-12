@@ -2130,6 +2130,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'product-list-horizontal',
@@ -2313,6 +2314,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2331,6 +2335,11 @@ __webpack_require__.r(__webpack_exports__);
       ingredients: [],
       quantity: Store.productToModify.quantity
     };
+  },
+  computed: {
+    totalCost: function totalCost() {
+      return this.product.cost * this.quantity;
+    }
   },
   mounted: function mounted() {
     var ingredients = this.product.ingredients;
@@ -2354,6 +2363,7 @@ __webpack_require__.r(__webpack_exports__);
           id: this.product.id,
           name: this.product.name,
           image: this.product.image,
+          cost: this.totalCost,
           description: this.product.description,
           ingredients: this.ingredients.filter(function (item) {
             return item.checked;
@@ -2480,6 +2490,7 @@ __webpack_require__.r(__webpack_exports__);
           id: this.product.id,
           name: this.product.name,
           image: this.product.image,
+          cost: this.totalCost,
           description: this.product.description,
           ingredients: this.ingredients.filter(function (item) {
             return item.checked;
@@ -40476,7 +40487,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400\n                       bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4\n                       flex flex-col justify-between leading-normal"
+                "border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400\n                       bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4\n                       w-full\n                       flex flex-col justify-between leading-normal"
             },
             [
               _c("div", { staticClass: "mb-8" }, [
@@ -40724,6 +40735,15 @@ var render = function() {
               1
             ),
             _vm._v(" "),
+            _c("section", { staticClass: "py-4" }, [
+              _c("p", [
+                _vm._v("Product Cost: "),
+                _c("span", { staticClass: "font-bold" }, [
+                  _vm._v(_vm._s(_vm.totalCost))
+                ])
+              ])
+            ]),
+            _vm._v(" "),
             _c(
               "section",
               { staticClass: "py-7 grid quantity-section items-center" },
@@ -40847,10 +40867,12 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _c("section", [
+            _c("section", { staticClass: "py-4" }, [
               _c("p", [
                 _vm._v("Product Cost: "),
-                _c("span", [_vm._v(_vm._s(_vm.totalCost))])
+                _c("span", { staticClass: "font-bold" }, [
+                  _vm._v(_vm._s(_vm.totalCost))
+                ])
               ])
             ]),
             _vm._v(" "),
