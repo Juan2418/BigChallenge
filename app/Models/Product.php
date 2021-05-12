@@ -21,7 +21,8 @@ class Product extends Model
         'category_id',
         'name',
         'description',
-        'image'
+        'image',
+        'cost'
     ];
 
     /**
@@ -32,6 +33,7 @@ class Product extends Model
     protected $casts = [
         'id' => 'integer',
         'category_id' => 'integer',
+        'cost' => 'integer'
     ];
 
 

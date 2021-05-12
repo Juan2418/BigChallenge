@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->foreignId('category_id')->constrained();
             $table->string('name')->unique();
             $table->string('description');
+            $table->string('image')->default('icons/warning_white.svg');
             $table->timestamps();
         });
 
