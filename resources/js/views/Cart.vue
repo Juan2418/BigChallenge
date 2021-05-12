@@ -4,7 +4,10 @@
         <section class="container h-screen overflow-y-scroll">
             <p class="font-bold text-2xl my-4">Your products</p>
             <product-list-horizontal :products="products"/>
-            <button class="btn btn-primary w-full justify-self-center"
+            <section class="py-4">
+                <p>Total: <span class="font-bold">{{ amountToPay }}</span></p>
+            </section>
+            <button v-if="products.length > 0" class="btn btn-primary w-full justify-self-center"
                     @click="showPaymentModal"
             >
                 Order
@@ -16,8 +19,8 @@
                 <modal v-if="show" @close="show = false">
                     <header slot="header">Select your payment method</header>
                     <section slot="body" class="grid grid-cols-1 gap-2 justify-items-center md:grid-cols-2 w-full">
-                        <card :information="creditCardOption" @click="sendOrder"></card>
-                        <card :information="cashOption" @click=""></card>
+                        <card :information="creditCardOption" @click="payCreditCard"></card>
+                        <card :information="cashOption" @click="payCash"></card>
                     </section>
                 </modal>
             </transition>
@@ -31,6 +34,7 @@ import ProductListHorizontal from "../components/ProductListHorizontal";
 import Modal from "../components/Modal";
 import 'animate.css';
 import Card from "../components/Card";
+import {goToHome, sendOrder} from "../utilities.js";
 
 
 export default {
@@ -53,12 +57,24 @@ export default {
             }
         }
     },
+    computed: {
+        amountToPay() {
+            return this.products.reduce((acum, prod) => acum += prod.cost, 0);
+        }
+    },
     methods: {
-        sendOrder() {
-            axios.post('api/order', this.products);
-        },
+        sendOrder,
         showPaymentModal() {
             this.show = true;
+        },
+        goToHome,
+        payCash() {
+            this.sendOrder(this.products);
+            Store.productsToOrder = [];
+            this.goToHome();
+        },
+        payCreditCard() {
+            SPA.$router.push('/pay/creditcard');
         }
     }
 }
