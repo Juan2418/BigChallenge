@@ -1,7 +1,7 @@
 <template>
     <Main class="grid grid-cols-2 grid-cols-main bg-gray-200">
         <nav-bar></nav-bar>
-        <section  class="grid sm:grid-cols-1 sm:grid-col md:grid-cols-product
+        <section class="grid sm:grid-cols-1 sm:grid-col md:grid-cols-product
                 p-5 md:text-2xl layout-product
                 shadow-md overflow-y-scroll h-screen">
             <div>
@@ -16,6 +16,9 @@
                 <section>
                     <h1 class="font-bold py-3">Customize your product:</h1>
                     <checkbox :ingredients="ingredients"/>
+                </section>
+                <section>
+                    <p>Product Cost: <span>{{ totalCost }}</span></p>
                 </section>
                 <section class="py-7 grid quantity-section items-center">
                     <label for="quantity">
@@ -50,6 +53,11 @@ export default {
             product: Store.productToAdd,
             ingredients: [],
             quantity: 1
+        }
+    },
+    computed: {
+        totalCost() {
+            return this.product.cost * this.quantity;
         }
     },
     mounted() {
