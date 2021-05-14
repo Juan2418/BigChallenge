@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderClientRequest;
 use App\Models\Order;
 use Faker\Core\Number;
 use Illuminate\Http\Request;
@@ -29,13 +30,8 @@ class OrderController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(OrderClientRequest $request)
     {
         $orderInfo = request()->all();
 
@@ -45,7 +41,7 @@ class OrderController extends Controller
 
         $this->attachProductsToOrder($orderInfo, $newOrder);
 
-        dd($newOrder);
+        response()->status(200);
     }
 
     /**
@@ -99,7 +95,13 @@ class OrderController extends Controller
      */
     private function attachProductToOrder($newOrder, $product): void
     {
-        $newOrder->products()->attach($product['id'], ["quantity" => $product['quantity']]);
+        $ingredients = [];
+        foreach ($product['ingredients'] as $ingredient) {
+            $ingredients[] = $ingredient['name'];
+        }
+        $ingredients = json_encode($ingredients);
+        $newOrder->products()
+            ->attach($product['id'], ["quantity" => $product['quantity'], "ingredients" => $ingredients]);
     }
 
     /**
@@ -108,7 +110,7 @@ class OrderController extends Controller
     private function getAmountFromRequest(array $orderInfo): int
     {
         $amount = 0;
-        foreach ($orderInfo as $product) {
+        foreach ($orderInfo['products'] as $product) {
             $amount += $product['cost'];
         }
         return $amount;
@@ -120,7 +122,7 @@ class OrderController extends Controller
      */
     private function attachProductsToOrder(array $orderInfo, $newOrder): void
     {
-        foreach ($orderInfo as $product) {
+        foreach ($orderInfo['products'] as $product) {
             $this->attachProductToOrder($newOrder, $product);
         }
     }

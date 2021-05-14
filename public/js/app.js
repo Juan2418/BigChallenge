@@ -2260,6 +2260,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_NavBar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/NavBar */ "./resources/js/components/NavBar.vue");
+/* harmony import */ var _utilities_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utilities.js */ "./resources/js/utilities.js");
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2270,10 +2279,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "creditcard-payment",
   components: {
     NavBar: _components_NavBar__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  data: function data() {
+    return {
+      creditCardNumber: "",
+      error: false
+    };
+  },
+  methods: {
+    creditCardIsValid: _utilities_js__WEBPACK_IMPORTED_MODULE_1__.creditCardIsValid,
+    payCreditCard: function payCreditCard() {
+      if (!(0,_utilities_js__WEBPACK_IMPORTED_MODULE_1__.creditCardIsValid)(this.creditCardNumber) || this.creditCardNumber.length === 0) {
+        this.error = true;
+        return;
+      }
+
+      this.sendOrder(Store.productsToOrder);
+      Store.productsToOrder = [];
+      this.goToHome();
+    }
   }
 });
 
@@ -2616,7 +2645,7 @@ __webpack_require__.r(__webpack_exports__);
       return "".concat(category.image);
     },
     cardCarouselStyles: function cardCarouselStyles() {
-      return "font-extrabold text-lg text-md-center\n                 p-4 text-center grid grid-cols-1\n                 snap-start w-full h-screen\n                 justify-items-center ";
+      return "font-extrabold text-lg text-md-center\n                 p-4 text-center grid grid-cols-1\n                 snap-start w-full h-screen\n                 justify-items-center items-center ";
     },
     selectBGColor: function selectBGColor(index) {
       return index % 2 == 0 ? "bg-primary text-secondary" : "bg-secondary text-primary";
@@ -2795,6 +2824,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "goToHome": () => (/* binding */ goToHome),
 /* harmony export */   "modifyProduct": () => (/* binding */ modifyProduct),
 /* harmony export */   "sendOrder": () => (/* binding */ sendOrder),
+/* harmony export */   "creditCardIsValid": () => (/* binding */ creditCardIsValid),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var goToHome = function goToHome() {
@@ -2802,10 +2832,30 @@ var goToHome = function goToHome() {
 };
 var modifyProduct = function modifyProduct(product) {
   Store.productToModify = product;
-  SPA.$router.push('/');
+  SPA.$router.push('/modify');
 };
 var sendOrder = function sendOrder(products) {
-  axios.post('api/order', products);
+  axios.post('api/order', {
+    'products': products
+  });
+};
+var creditCardIsValid = function creditCardIsValid(value) {
+  // Accept only digits, dashes or spaces
+  if (/[^0-9-\s]+/.test(value)) return false; //Luhn Algorithm
+
+  var nCheck = 0,
+      bEven = false;
+  value = value.replace(/\D/g, "");
+
+  for (var n = value.length - 1; n >= 0; n--) {
+    var cDigit = value.charAt(n),
+        nDigit = parseInt(cDigit, 10);
+    if (bEven && (nDigit *= 2) > 9) nDigit -= 9;
+    nCheck += nDigit;
+    bEven = !bEven;
+  }
+
+  return nCheck % 10 == 0;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   modifyProduct: modifyProduct
@@ -40813,7 +40863,49 @@ var render = function() {
     [
       _c("nav-bar"),
       _vm._v(" "),
-      _c("section", { staticClass: "container h-screen overflow-y-scroll" })
+      _c("section", { staticClass: "container h-screen overflow-y-scroll" }, [
+        _c("section", { staticClass: "flex flex-col py-60" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.creditCardNumber,
+                expression: "creditCardNumber"
+              }
+            ],
+            staticClass: "text-xl h-10",
+            attrs: { type: "text", maxlength: "20" },
+            domProps: { value: _vm.creditCardNumber },
+            on: {
+              click: function($event) {
+                _vm.error = false
+              },
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.creditCardNumber = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.error
+            ? _c("p", { staticClass: "text-red-900 text-sm py-2" }, [
+                _vm._v("\n                *Invalid credit card.\n            ")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary py-4",
+              on: { click: _vm.payCreditCard }
+            },
+            [_vm._v("Pay")]
+          )
+        ])
+      ])
     ],
     1
   )

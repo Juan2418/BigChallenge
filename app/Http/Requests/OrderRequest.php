@@ -27,7 +27,7 @@ class OrderRequest extends FormRequest
     {
         return [
             'amount' => 'required|numeric|min:0',
-            'products' => 'required'
+            'products' => 'required|exists:products',
         ];
     }
 

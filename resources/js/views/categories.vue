@@ -47,7 +47,7 @@ export default {
             return `font-extrabold text-lg text-md-center
                  p-4 text-center grid grid-cols-1
                  snap-start w-full h-screen
-                 justify-items-center `
+                 justify-items-center items-center `
         },
 
         selectBGColor(index) {
