@@ -41,7 +41,8 @@ class OrderController extends Controller
 
         $this->attachProductsToOrder($orderInfo, $newOrder);
 
-        response()->status(200);
+        return response("Order has been correctly processed",200)
+            ->header('Content-Type', 'text/plain');
     }
 
     /**
