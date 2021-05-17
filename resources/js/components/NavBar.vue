@@ -13,11 +13,11 @@
              @click="goToCart"
         >
 
-            <img v-for="product in productsToOrder" :src="product.image" :alt="product.name"
-                 class="rounded-full md:p-2 w-2/3 md:w-1/4 md:border-4
+        <img v-for="product in productsToOrder" :src="product.image" :alt="product.name"
+             class="rounded-full md:p-2 w-2/3 md:w-1/4 md:border-4
                     scale-on-hover animate__animated animate__slideInDown"
-                 @click="modifyProduct(product)"
-            >
+             @click="modifyProduct(product)"
+        >
     </nav>
 </template>
 <script>
@@ -40,17 +40,5 @@ export default {
 </script>
 
 <style>
-.animate-slide-down-in {
-    animation: appear .3;
-}
 
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(-200px);
-    }
-    to {
-        opacity: 1;
-    }
-}
 </style>
