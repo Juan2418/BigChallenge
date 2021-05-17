@@ -5,18 +5,7 @@
                 p-5 md:text-2xl layout-product
                 shadow-md overflow-y-scroll h-screen">
             <div>
-                <section class="text-4xl py-4">
-                    {{ product.name }}
-                </section>
-                <section class="py-3">
-                    <p>
-                        {{ product.description }}
-                    </p>
-                </section>
-                <section>
-                    <h1 class="font-bold py-3">Customize your product:</h1>
-                    <checkbox :ingredients="ingredients"/>
-                </section>
+                <product-customization-info :ingredients="ingredients" :product="product"/>
                 <section class="py-4">
                     <p>Product Cost: <span class="font-bold">{{ totalCost }}</span></p>
                 </section>
@@ -44,10 +33,10 @@
 <script>
 import NumberInput from "../components/NumberInput";
 import NavBar from "../components/NavBar";
-import Checkbox from "../components/Checkbox";
+import ProductCustomizationInfo from "../components/ProductCustomizationInfo";
 
 export default {
-    components: {Checkbox, NavBar, NumberInput},
+    components: {ProductCustomizationInfo, NavBar, NumberInput},
     data() {
         return {
             product: Store.productToAdd,
