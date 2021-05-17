@@ -2,16 +2,7 @@
     <Main class="grid grid-cols-2 grid-cols-main bg-gray-200">
         <nav-bar></nav-bar>
         <section class="container h-screen overflow-y-scroll">
-            <p class="font-bold text-2xl my-4">Your products</p>
-            <product-list-horizontal :products="products"/>
-            <section class="py-4">
-                <p>Total: <span class="font-bold">{{ amountToPay }}</span></p>
-            </section>
-            <button v-if="products.length > 0" class="btn btn-primary w-full justify-self-center"
-                    @click="showPaymentModal"
-            >
-                Order
-            </button>
+            <order-form :amount-to-pay="amountToPay" :products="products" :show-payment-modal="showPaymentModal"/>
             <transition
                 enter-active-class="animate__animated animate__slideInUp"
                 leave-active-class="animate__animated animate__slideOutDown"
@@ -31,17 +22,17 @@
 
 <script>
 import NavBar from "../components/NavBar";
-import ProductListHorizontal from "../components/ProductListHorizontal";
 import Modal from "../components/Modal";
 import 'animate.css';
 import Card from "../components/Card";
 import {goToHome, sendOrder} from "../utilities.js";
 import PaymentValidationModals from "./PaymentValidationModals";
+import OrderForm from "./OrderForm";
 
 
 export default {
     name: "cart",
-    components: {PaymentValidationModals, Card, Modal, ProductListHorizontal, NavBar},
+    components: {OrderForm, PaymentValidationModals, Card, Modal, NavBar},
 
     data() {
         return {
