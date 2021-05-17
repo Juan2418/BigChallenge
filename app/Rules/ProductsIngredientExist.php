@@ -30,16 +30,11 @@ class ProductsIngredientExist implements Rule
         $allExist = true;
 
         foreach ($value as $product) {
-            if (Product::find($product['id']) == null || $product['quantity'] < 1) {
+            if ($this->isInvalidProduct($product)) {
                 $allExist = false;
             }
-            foreach ($product['ingredients'] as $ingredient) {
-                if (Ingredient::find($ingredient['id']) == null) {
-                    $allExist = false;
-                }
-            }
+            $allExist = $this->checkAllIngredientsAreValid($allExist, $product['ingredients']);
         }
-
 
         return $allExist;
     }
@@ -52,5 +47,28 @@ class ProductsIngredientExist implements Rule
     public function message()
     {
         return 'The order contains a non-existing product/ingredient';
+    }
+
+    /**
+     * @param $ingredients
+     * @return false
+     */
+    private function checkAllIngredientsAreValid($allExist,$ingredients): bool
+    {
+        foreach ($ingredients as $ingredient) {
+            if (Ingredient::find($ingredient['id']) == null) {
+                $allExist = false;
+            }
+        }
+        return $allExist;
+    }
+
+    /**
+     * @param $product
+     * @return bool
+     */
+    private function isInvalidProduct($product): bool
+    {
+        return Product::find($product['id']) == null || $product['quantity'] < 1;
     }
 }
