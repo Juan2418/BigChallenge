@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OrderClientRequest;
 use App\Models\Order;
+use App\Models\Product;
 use Faker\Core\Number;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -112,7 +113,7 @@ class OrderController extends Controller
     {
         $amount = 0;
         foreach ($orderInfo['products'] as $product) {
-            $amount += $product['cost'];
+            $amount += Product::find($product['id'])->cost * $product['quantity'];
         }
         return $amount;
     }
