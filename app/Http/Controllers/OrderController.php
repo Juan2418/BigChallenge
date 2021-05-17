@@ -36,9 +36,7 @@ class OrderController extends Controller
     {
         $orderInfo = request()->all();
 
-        $amount = $this->getAmountFromRequest($orderInfo);
-
-        $newOrder = Order::create(["amount" => $amount, "isPaid" => true]);
+        $newOrder = $this->createOrderWithAmountSet($orderInfo);
 
         $this->attachProductsToOrder($orderInfo, $newOrder);
 
@@ -147,5 +145,17 @@ class OrderController extends Controller
             $ingredients[] = $ingredient['name'];
         }
         return json_encode($ingredients);
+    }
+
+    /**
+     * @param array $orderInfo
+     * @return mixed
+     */
+    private function createOrderWithAmountSet(array $orderInfo)
+    {
+        $amount = $this->getAmountFromRequest($orderInfo);
+
+        $newOrder = Order::create(["amount" => $amount, "isPaid" => true]);
+        return $newOrder;
     }
 }
