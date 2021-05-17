@@ -9,18 +9,20 @@
         </router-link>
         <img :src="'icons/shopping_cart_white.svg'" alt="Shopping cart"
              class="w-12 md:w-16 my-4
-                    scale-on-hover"
+                    scale-on-hover "
              @click="goToCart"
         >
-        <img v-for="product in productsToOrder" :src="product.image" :alt="product.name"
-             class="rounded-full md:p-2 w-2/3 md:w-1/4 md:border-4
-                    scale-on-hover"
-             @click="modifyProduct(product)"
-        >
+
+            <img v-for="product in productsToOrder" :src="product.image" :alt="product.name"
+                 class="rounded-full md:p-2 w-2/3 md:w-1/4 md:border-4
+                    scale-on-hover animate__animated animate__slideInDown"
+                 @click="modifyProduct(product)"
+            >
     </nav>
 </template>
 <script>
 import {modifyProduct} from "../utilities";
+
 export default {
     name: 'nav-bar',
     data() {
@@ -36,3 +38,19 @@ export default {
     },
 }
 </script>
+
+<style>
+.animate-slide-down-in {
+    animation: appear .3;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(-200px);
+    }
+    to {
+        opacity: 1;
+    }
+}
+</style>
