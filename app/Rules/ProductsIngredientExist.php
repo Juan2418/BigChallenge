@@ -53,7 +53,7 @@ class ProductsIngredientExist implements Rule
      * @param $ingredients
      * @return false
      */
-    private function checkAllIngredientsAreValid($allExist,$ingredients): bool
+    private function checkAllIngredientsAreValid($allExist, $ingredients): bool
     {
         foreach ($ingredients as $ingredient) {
             if (Ingredient::find($ingredient['id']) == null) {

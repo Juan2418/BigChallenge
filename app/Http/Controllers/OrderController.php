@@ -42,7 +42,7 @@ class OrderController extends Controller
 
         $this->attachProductsToOrder($orderInfo, $newOrder);
 
-        return response("Order has been correctly processed",200)
+        return response("Order has been correctly processed", 200)
             ->header('Content-Type', 'text/plain');
     }
 
@@ -97,13 +97,11 @@ class OrderController extends Controller
      */
     private function attachProductToOrder($newOrder, $product): void
     {
-        $ingredients = [];
-        foreach ($product['ingredients'] as $ingredient) {
-            $ingredients[] = $ingredient['name'];
-        }
-        $ingredients = json_encode($ingredients);
+        $ingredients = $this->getIngredientNames($product['ingredients']);
         $newOrder->products()
-            ->attach($product['id'], ["quantity" => $product['quantity'], "ingredients" => $ingredients]);
+            ->attach($product['id'],
+                ["quantity" => $product['quantity'],
+                    "ingredients" => $ingredients]);
     }
 
     /**
@@ -113,7 +111,7 @@ class OrderController extends Controller
     {
         $amount = 0;
         foreach ($orderInfo['products'] as $product) {
-            $amount += Product::find($product['id'])->cost * $product['quantity'];
+            $amount += $this->getTotalCostFromProduct($product);
         }
         return $amount;
     }
@@ -127,5 +125,27 @@ class OrderController extends Controller
         foreach ($orderInfo['products'] as $product) {
             $this->attachProductToOrder($newOrder, $product);
         }
+    }
+
+    /**
+     * @param $product
+     * @return float|int
+     */
+    private function getTotalCostFromProduct($product)
+    {
+        return Product::find($product['id'])->cost * $product['quantity'];
+    }
+
+    /**
+     * @param $ingredients1
+     * @return false|string
+     */
+    private function getIngredientNames($ingredients1)
+    {
+        $ingredients = [];
+        foreach ($ingredients1 as $ingredient) {
+            $ingredients[] = $ingredient['name'];
+        }
+        return json_encode($ingredients);
     }
 }
