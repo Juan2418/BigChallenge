@@ -6,17 +6,31 @@ export const modifyProduct = (product) => {
     SPA.$router.push('/modify');
 }
 
+function getError(err) {
+    return err.response.data.errors.products[0];
+}
+
 export const sendOrder = (products) => {
-    axios.post('api/order', {'products': products});
+    return axios.post('api/order', {'products': products})
+        .then(response => 200)
+        .catch(err => getError(err));
+}
+
+const removeNonDigits = (value) => {
+    return value.replace(/\D/g, "");
+}
+
+const notOnlyDigitsAndSpaces = (value) => {
+    return /[^0-9-\s]+/.test(value);
 }
 
 export const creditCardIsValid = (value) => {
     // Accept only digits, dashes or spaces
-    if (/[^0-9-\s]+/.test(value)) return false;
+    if (notOnlyDigitsAndSpaces(value)) return false;
 
     //Luhn Algorithm
     let nCheck = 0, bEven = false;
-    value = value.replace(/\D/g, "");
+    value = removeNonDigits(value);
 
     for (let n = value.length - 1; n >= 0; n--) {
         let cDigit = value.charAt(n),

@@ -24,6 +24,7 @@
                     </section>
                 </modal>
             </transition>
+            <payment-validation-modals :error="error" :show-error="showError" :show-success="showSuccess"/>
         </section>
     </Main>
 </template>
@@ -35,11 +36,12 @@ import Modal from "../components/Modal";
 import 'animate.css';
 import Card from "../components/Card";
 import {goToHome, sendOrder} from "../utilities.js";
+import PaymentValidationModals from "./PaymentValidationModals";
 
 
 export default {
     name: "cart",
-    components: {Card, Modal, ProductListHorizontal, NavBar},
+    components: {PaymentValidationModals, Card, Modal, ProductListHorizontal, NavBar},
 
     data() {
         return {
@@ -54,7 +56,10 @@ export default {
                 name: "Cash",
                 image: "icons/attach_money_black.svg",
                 description: ""
-            }
+            },
+            error: "",
+            showError: false,
+            showSuccess: false
         }
     },
     computed: {
@@ -68,10 +73,17 @@ export default {
             this.show = true;
         },
         goToHome,
-        payCash() {
-            this.sendOrder(this.products);
-            Store.productsToOrder = [];
-            this.goToHome();
+        async payCash() {
+            let response = await this.sendOrder(this.products);
+            if (response === 200) {
+                Store.productsToOrder = [];
+                this.show = false;
+                this.showSuccess = true;
+                setTimeout(() => this.goToHome(), 2000);
+            } else {
+                this.error = response;
+                this.showError = true;
+            }
         },
         payCreditCard() {
             SPA.$router.push('/pay/creditcard');

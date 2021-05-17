@@ -9,9 +9,8 @@
                 </p>
                 <button @click="payCreditCard" class="btn btn-primary py-4">Pay</button>
             </section>
-
+            <payment-validation-modals :error="requestError" :show-error="showError" :show-success="showSuccess"/>
         </section>
-
     </Main>
 </template>
 
@@ -25,19 +24,29 @@ export default {
     data() {
         return {
             creditCardNumber: "",
-            error: false
+            error: false,
+            requestError: "",
+            showError: false,
+            showSuccess: false
         }
     },
     methods: {
         creditCardIsValid,
-        payCreditCard() {
+        async payCreditCard() {
             if (!creditCardIsValid(this.creditCardNumber) || this.creditCardNumber.length === 0) {
                 this.error = true;
                 return;
             }
-            this.sendOrder(Store.productsToOrder);
-            Store.productsToOrder = [];
-            this.goToHome();
+            let response = await this.sendOrder(this.products);
+            if (response === 200) {
+                Store.productsToOrder = [];
+                this.show = false;
+                this.showSuccess = true;
+                setTimeout(() => this.goToHome(), 2000);
+            } else {
+                this.requestError = response;
+                this.showError = true;
+            }
         }
     }
 }
