@@ -34,6 +34,19 @@
             'body'   => 'This chart displays the income in the past 7 days.<br><br>',
        ],
   ]);
+   Widget::add([
+      'type'       => 'chart',
+      'controller' => \App\Http\Controllers\Admin\Charts\WeeklyPopularProductChartController::class,
+
+      // OPTIONALS
+
+      'class'   => 'card mb-2',
+      'wrapper' => ['class'=> 'col-md-6'] ,
+      'content' => [
+            'header' => 'Products',
+            'body'   => 'This chart displays the most popular products.<br><br>',
+       ],
+  ]);
 @endphp
 
 @section('content')
