@@ -40,7 +40,7 @@ class MonthlyOrdersChartController extends ChartController
      */
     public function data()
     {
-        $ordersInThePastMonth = array(31);
+        $ordersInThePastMonth = array();
         for ($daysBack = 15; $daysBack >= 0; $daysBack--) {
             $ordersInThePastMonth[] = \App\Models\Order::whereDate('created_at', today()->subDays($daysBack))->count();
         }

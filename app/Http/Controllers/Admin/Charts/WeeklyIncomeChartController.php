@@ -39,7 +39,7 @@ class WeeklyIncomeChartController extends ChartController
      */
     public function data()
     {
-        $incomeInTheLastWeek = array(8);
+        $incomeInTheLastWeek = array();
         for ($daysBack = 7; $daysBack >= 0; $daysBack--) {
             $incomeInTheLastWeek[] = Order::whereDate('created_at', today()->subDays($daysBack))->sum('amount');
         }
