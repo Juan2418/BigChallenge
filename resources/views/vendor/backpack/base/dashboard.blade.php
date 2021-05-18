@@ -21,6 +21,19 @@
             'body'   => 'This chart displays the order flow in the past 15 days.<br><br>',
        ],
   ]);
+   Widget::add([
+      'type'       => 'chart',
+      'controller' => \App\Http\Controllers\Admin\Charts\WeeklyIncomeChartController::class,
+
+      // OPTIONALS
+
+      'class'   => 'card mb-2',
+      'wrapper' => ['class'=> 'col-md-6'] ,
+      'content' => [
+            'header' => 'Income',
+            'body'   => 'This chart displays the income in the past 7 days.<br><br>',
+       ],
+  ]);
 @endphp
 
 @section('content')

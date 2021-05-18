@@ -5,7 +5,13 @@
 @import 'variables';
 
 // Bootstrap
+$theme-colors: (
+    "primary": #1C211D,
+    "secondary": #CBB007
+);
+
 @import '~bootstrap/scss/bootstrap';
+
 
 @import "tailwindcss/base";
 
