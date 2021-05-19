@@ -26,6 +26,7 @@ Route::get('/categories', function() {
 Route::post('/order', 'App\Http\Controllers\OrderController@store');
 
 
-Route::get('/product-popularity', 'App\Http\Controllers\PopularityController@chartData');
+Route::get('/product-popularity/chart', 'App\Http\Controllers\PopularityController@chartData');
 Route::get('/product-popularity/names', 'App\Http\Controllers\PopularityController@names');
 Route::get('/product-popularity/totals', 'App\Http\Controllers\PopularityController@totalOrderCount');
+Route::get('/product-popularity/', 'App\Http\Controllers\PopularityController@index');
