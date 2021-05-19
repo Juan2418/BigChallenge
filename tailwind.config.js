@@ -13,6 +13,9 @@ module.exports = {
                 },
 
             },
+            height: {
+                'content': 'min-content',
+            },
             gridTemplateColumns: {
                 // Complex site-specific column configuration
                 'main': '15% 85%',
@@ -35,7 +38,8 @@ module.exports = {
     variants: {
         extend: {
             scale: ['active', 'group-hover'],
-            animation: ['responsive', 'motion-safe', 'motion-reduce', 'hover']
+            animation: ['responsive', 'motion-safe', 'motion-reduce', 'hover'],
+            stroke: ['hover', 'focus'],
         },
     },
     plugins: [],

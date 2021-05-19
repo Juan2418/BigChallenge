@@ -24,5 +24,17 @@
     }
 }
 
-a{
+.btn {
+    @apply font-bold py-2 px-4 rounded;
+    margin-bottom: 2rem;
+}
+.btn-primary {
+    @apply bg-primary text-white;
+}
+.btn-primary:hover {
+    @apply bg-secondary;
+}
+
+.scale-on-hover {
+    @apply transform transition duration-500 hover:scale-110
 }

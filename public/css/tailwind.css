@@ -11683,6 +11683,12 @@ video {
   height: 100vh;
 }
 
+.h-content {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -24464,6 +24470,14 @@ video {
   stroke: currentColor;
 }
 
+.hover\:stroke-current:hover {
+  stroke: currentColor;
+}
+
+.focus\:stroke-current:focus {
+  stroke: currentColor;
+}
+
 .stroke-0 {
   stroke-width: 0;
 }
@@ -32627,7 +32641,51 @@ video {
   scroll-snap-align: start;
 }
 
-a{
+.btn {
+  border-radius: 0.25rem;
+  font-weight: 700;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  --tw-bg-opacity: 1;
+  background-color: rgba(28, 33, 29, var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.btn-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(203, 176, 7, var(--tw-bg-opacity));
+}
+
+.scale-on-hover {
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))
+}
+
+.scale-on-hover:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+}
+
+.scale-on-hover {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  transition-duration: 500ms;
 }
 
 @media (min-width: 640px) {
@@ -43761,6 +43819,12 @@ a{
 
   .sm\:h-screen {
     height: 100vh;
+  }
+
+  .sm\:h-content {
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
   }
 
   .sm\:text-xs {
@@ -56528,6 +56592,14 @@ a{
   }
 
   .sm\:stroke-current {
+    stroke: currentColor;
+  }
+
+  .sm\:hover\:stroke-current:hover {
+    stroke: currentColor;
+  }
+
+  .sm\:focus\:stroke-current:focus {
     stroke: currentColor;
   }
 
@@ -75649,6 +75721,12 @@ a{
     height: 100vh;
   }
 
+  .md\:h-content {
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
+  }
+
   .md\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -88414,6 +88492,14 @@ a{
   }
 
   .md\:stroke-current {
+    stroke: currentColor;
+  }
+
+  .md\:hover\:stroke-current:hover {
+    stroke: currentColor;
+  }
+
+  .md\:focus\:stroke-current:focus {
     stroke: currentColor;
   }
 
@@ -107535,6 +107621,12 @@ a{
     height: 100vh;
   }
 
+  .lg\:h-content {
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
+  }
+
   .lg\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -120300,6 +120392,14 @@ a{
   }
 
   .lg\:stroke-current {
+    stroke: currentColor;
+  }
+
+  .lg\:hover\:stroke-current:hover {
+    stroke: currentColor;
+  }
+
+  .lg\:focus\:stroke-current:focus {
     stroke: currentColor;
   }
 
@@ -139421,6 +139521,12 @@ a{
     height: 100vh;
   }
 
+  .xl\:h-content {
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
+  }
+
   .xl\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -152186,6 +152292,14 @@ a{
   }
 
   .xl\:stroke-current {
+    stroke: currentColor;
+  }
+
+  .xl\:hover\:stroke-current:hover {
+    stroke: currentColor;
+  }
+
+  .xl\:focus\:stroke-current:focus {
     stroke: currentColor;
   }
 
@@ -171307,6 +171421,12 @@ a{
     height: 100vh;
   }
 
+  .\32xl\:h-content {
+    height: -webkit-min-content;
+    height: -moz-min-content;
+    height: min-content;
+  }
+
   .\32xl\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
@@ -184072,6 +184192,14 @@ a{
   }
 
   .\32xl\:stroke-current {
+    stroke: currentColor;
+  }
+
+  .\32xl\:hover\:stroke-current:hover {
+    stroke: currentColor;
+  }
+
+  .\32xl\:focus\:stroke-current:focus {
     stroke: currentColor;
   }
 

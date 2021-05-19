@@ -13,9 +13,6 @@ class ModifyProductImageDefault extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->string('image')->default('icons/warning_white.svg')->change();
-        });
         Schema::table('categories', function (Blueprint $table) {
             $table->string('image')->default('icons/warning_white.svg')->change();
         });
@@ -29,7 +26,9 @@ class ModifyProductImageDefault extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
-            //
+            Schema::table('categories', function (Blueprint $table) {
+                $table->removeColumn('image');
+            });
         });
     }
 }

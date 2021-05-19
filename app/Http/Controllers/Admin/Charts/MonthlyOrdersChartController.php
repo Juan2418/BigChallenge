@@ -16,10 +16,14 @@ class MonthlyOrdersChartController extends ChartController
     {
         $this->chart = new Chart();
 
-        // MANDATORY. Set the labels for the dataset points
-        $this->chart->labels([
-            'Today',
-        ]);
+        $labels = [];
+        for ($days_backwards = 15; $days_backwards >= 0; $days_backwards--) {
+            if ($days_backwards == 1) {
+            }
+            $labels[] = $days_backwards.' days ago';
+        }
+        $this->chart->labels($labels);
+
 
         // RECOMMENDED. Set URL that the ChartJS library should call, to get its data using AJAX.
         $this->chart->load(backpack_url('charts/monthly-orders'));
@@ -36,9 +40,9 @@ class MonthlyOrdersChartController extends ChartController
      */
     public function data()
     {
-        $ordersInThePastMonth = array(31);
-        for ($daysBack = 30; $daysBack >= 0; $daysBack--) {
-            $ordersInThePastMonth[] = \App\Models\Order::where('created_at', '>=', today()->subDays($daysBack))->count();
+        $ordersInThePastMonth = array();
+        for ($daysBack = 15; $daysBack >= 0; $daysBack--) {
+            $ordersInThePastMonth[] = \App\Models\Order::whereDate('created_at', today()->subDays($daysBack))->count();
         }
 
         $this->chart->dataset('Orders Created', 'line',

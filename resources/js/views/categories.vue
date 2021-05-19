@@ -12,7 +12,7 @@
                 {{ category.name }}
             </div>
         </section>
-        <section class="product-list overflow-y-scroll h-screen">
+        <section class="flex flex-wrap px-1 justify-center product-list overflow-y-scroll w-full h-screen">
             <ProductList v-for="(product, i) in currentCategory.products" :key="i" v-bind:product="product"></ProductList>
         </section>
     </Main>
@@ -32,7 +32,7 @@ export default {
     },
 
     mounted() {
-        axios.get('/categories').then(({data}) => {
+        axios.get('/api/categories').then(({data}) => {
             this.categories = data;
             this.currentCategory = this.categories[0];
             this.categoriesLoaded = true;
@@ -47,7 +47,7 @@ export default {
             return `font-extrabold text-lg text-md-center
                  p-4 text-center grid grid-cols-1
                  snap-start w-full h-screen
-                 justify-items-center `
+                 justify-items-center items-center `
         },
 
         selectBGColor(index) {

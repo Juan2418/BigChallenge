@@ -1,6 +1,7 @@
 window._ = require('lodash');
 import VueRouter from "vue-router";
 import PortalVue from 'portal-vue';
+import VueMq from 'vue-mq';
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -26,6 +27,13 @@ window.axios = require('axios');
 window.Vue = require('vue').default;
 Vue.use(VueRouter);
 Vue.use(PortalVue);
+Vue.use(VueMq, {
+    breakpoints: {
+        sm: 770,
+        md: 1250,
+        lg: Infinity,
+    }
+})
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

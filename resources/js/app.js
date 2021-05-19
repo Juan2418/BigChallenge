@@ -26,9 +26,13 @@ import router from './routes.js';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-window.Store = new Vue({data: {
-    productToAdd: null
-}});
+window.Store = new Vue({
+    data: {
+        productToAdd: null,
+        productToModify: null,
+        productsToOrder: [],
+    }
+});
 
 window.SPA = new Vue({
     el: '#app',
