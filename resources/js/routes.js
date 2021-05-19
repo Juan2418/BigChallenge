@@ -4,6 +4,7 @@ import ProductCostumization from "./views/ProductCostumization";
 import ModifyProduct from "./views/ModifyProduct";
 import Cart from "./views/Cart";
 import CreditCardPayment from "./views/CreditCardPayment";
+import PopularProducts from "./views/PopularProducts";
 
 let routes = [
     {
@@ -25,6 +26,10 @@ let routes = [
     {
         path: '/pay/creditcard',
         component: CreditCardPayment,
+    },
+    {
+        path: '/popular-products',
+        component: PopularProducts,
     },
 ];
 
