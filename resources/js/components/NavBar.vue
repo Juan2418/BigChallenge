@@ -7,11 +7,22 @@
                             scale-on-hover">
             </a>
         </router-link>
-        <img :src="'icons/shopping_cart_white.svg'" alt="Shopping cart"
-             class="w-12 md:w-16 my-4
-                    scale-on-hover "
-             @click="goToCart"
-        >
+        <router-link to="/popular-products">
+            <a>
+                <img :src="'icons/star_white.svg'" alt="Popular products"
+                     class="w-12 md:w-16 my-4
+                            scale-on-hover "
+                >
+            </a>
+        </router-link>
+        <router-link to="/cart">
+            <a>
+                <img :src="'icons/shopping_cart_white.svg'" alt="Shopping cart"
+                     class="w-12 md:w-16 my-4
+                            scale-on-hover "
+                >
+            </a>
+        </router-link>
 
         <img v-for="product in productsToOrder" :src="product.image" :alt="product.name"
              class="rounded-full md:p-2 w-2/3 md:w-1/4 md:border-4
@@ -31,9 +42,6 @@ export default {
         }
     },
     methods: {
-        goToCart() {
-            SPA.$router.push('/cart');
-        },
         modifyProduct
     },
 }
