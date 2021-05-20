@@ -2858,6 +2858,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -43048,10 +43054,26 @@ var render = function() {
               staticClass:
                 "flex flex-wrap px-1 justify-center\n                overflow-y-scroll w-full h-screen"
             },
-            _vm._l(_vm.products, function(product, i) {
-              return _c("ProductList", { key: i, attrs: { product: product } })
-            }),
-            1
+            [
+              _c("h1", { staticClass: "text-2xl py-2 font-bold" }, [
+                _vm._v("Top products")
+              ]),
+              _vm._v(" "),
+              _c(
+                "section",
+                {
+                  staticClass:
+                    "flex flex-wrap\n                        px-1 py-2 w-full\n                        justify-center\n                        overflow-y-scroll"
+                },
+                _vm._l(_vm.products, function(product, i) {
+                  return _c("ProductList", {
+                    key: i,
+                    attrs: { product: product }
+                  })
+                }),
+                1
+              )
+            ]
           )
         : _vm._e()
     ],
