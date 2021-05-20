@@ -7,6 +7,7 @@
                               :cvv="cvv"
                               :cvv-error="cvvError"
                               :name="name"
+                              :remove-functions="{removeCvvError, removeNameError, removeCreditCardError}"
                               :name-error="nameError"
                               :pay-credit-card="payCreditCard"
             />
@@ -46,6 +47,9 @@ export default {
         creditCardIsValid,
         sendOrder,
         goToHome,
+        removeCreditCardError() {this.creditcardError = false},
+        removeNameError() {this.nameError = false},
+        removeCvvError() {this.cvvError = false},
         CVVOnlyDigits() {
             return /^\d+$/g.test(this.cvv);
         },
