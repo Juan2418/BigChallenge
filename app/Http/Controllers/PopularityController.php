@@ -83,7 +83,7 @@ class PopularityController extends Controller
     private function getProducts(\Illuminate\Support\Collection $ids): array
     {
         $products = array();
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < count($ids); $i++) {
             $products[] = Product::with('ingredients')->find($ids[$i]->id);
         }
         return $products;
