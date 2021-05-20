@@ -9,6 +9,7 @@
             <section class="flex flex-wrap
                             px-1 py-2 w-full
                             justify-center
+                            items-baseline
                             overflow-y-scroll">
                 <ProductList
                     v-for="(product, i) in products"
