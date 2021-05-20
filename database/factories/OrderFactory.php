@@ -25,7 +25,6 @@ class OrderFactory extends Factory
         return [
             'amount' => $this->faker->numberBetween(0,10000),
             'isPaid' => $this->faker->boolean,
-
         ];
     }
 }

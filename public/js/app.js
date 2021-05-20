@@ -2864,6 +2864,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -7827,7 +7828,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-438ffe92]{\n    height: -webkit-min-content;\n    height: -moz-min-content;\n    height: min-content;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-438ffe92]{\n    height: 20vh;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -42236,7 +42237,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "flex w-full md:w-auto m-1 md:m-6 card",
+      staticClass: "flex w-full md:w-auto m-1 md:m-6",
       on: {
         click: function($event) {
           return _vm.setCurrentProductToAdd()
@@ -42252,7 +42253,7 @@ var render = function() {
         },
         [
           _c("img", {
-            staticClass: "w-full md:w-1/2",
+            staticClass: "w-full md:w-1/2 h-52",
             attrs: { src: _vm.product.image, alt: _vm.product.name + " Image" }
           }),
           _vm._v(" "),
@@ -43063,7 +43064,7 @@ var render = function() {
                 "section",
                 {
                   staticClass:
-                    "flex flex-wrap\n                        px-1 py-2 w-full\n                        justify-center\n                        overflow-y-scroll"
+                    "flex flex-wrap\n                        px-1 py-2 w-full\n                        justify-center\n                        items-baseline\n                        overflow-y-scroll"
                 },
                 _vm._l(_vm.products, function(product, i) {
                   return _c("ProductList", {

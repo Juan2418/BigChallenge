@@ -20,13 +20,15 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         Ingredient::factory()->count(10)->create();
         Category::factory()->count(5)->create();
+        Order::factory()->count(7)->create();
 //        Category::factory()->has(Product::factory()->has(Ingredient::factory()->count(5))->count(5))->count(5)->create();
 //        Product::factory()->has(Ingredient::factory()->count(5))->count(10)->create();
 //        Order::factory()->has(Product::factory()->count(5))->count(15)->create();
         $this->call([
-                ProductSeeder::class,
-                IngredientSeeder::class,
-                CategorySeeder::class
-            ]);
+            ProductSeeder::class,
+            IngredientSeeder::class,
+            CategorySeeder::class,
+            OrderSeeder::class
+        ]);
     }
 }
