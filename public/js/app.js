@@ -2411,7 +2411,19 @@ __webpack_require__.r(__webpack_exports__);
     cvvError: {},
     name: {},
     nameError: {},
-    payCreditCard: {}
+    payCreditCard: {},
+    removeFunctions: {}
+  },
+  computed: {
+    cvvErrorComputed: function cvvErrorComputed() {
+      return this.cvvError;
+    },
+    creditcardErrorComputed: function creditcardErrorComputed() {
+      return this.creditcardError;
+    },
+    nameErrorComputed: function nameErrorComputed() {
+      return this.nameError;
+    }
   }
 });
 
@@ -2440,6 +2452,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -2490,6 +2503,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     creditCardIsValid: _utilities_js__WEBPACK_IMPORTED_MODULE_3__.creditCardIsValid,
     sendOrder: _utilities_js__WEBPACK_IMPORTED_MODULE_3__.sendOrder,
     goToHome: _utilities_js__WEBPACK_IMPORTED_MODULE_3__.goToHome,
+    removeCreditCardError: function removeCreditCardError() {
+      this.creditcardError = false;
+    },
+    removeNameError: function removeNameError() {
+      this.nameError = false;
+    },
+    removeCvvError: function removeCvvError() {
+      this.cvvError = false;
+    },
     CVVOnlyDigits: function CVVOnlyDigits() {
       return /^\d+$/g.test(this.cvv);
     },
@@ -42493,9 +42515,7 @@ var render = function() {
         attrs: { type: "text", id: "name" },
         domProps: { value: _vm.name },
         on: {
-          click: function($event) {
-            _vm.nameError = false
-          },
+          click: _vm.removeFunctions.removeNameError,
           input: function($event) {
             if ($event.target.composing) {
               return
@@ -42507,7 +42527,7 @@ var render = function() {
       _vm._v(" "),
       _vm.nameError
         ? _c("p", { staticClass: "text-red-900 text-sm py-2" }, [
-            _vm._v("\n      *Add your name.\n    ")
+            _vm._v("\n            *Add your name.\n        ")
           ])
         : _vm._e()
     ]),
@@ -42528,9 +42548,7 @@ var render = function() {
         attrs: { type: "text", id: "number", maxlength: "20" },
         domProps: { value: _vm.creditCardNumber },
         on: {
-          click: function($event) {
-            _vm.creditcardError = false
-          },
+          click: _vm.removeFunctions.removeCreditCardError,
           input: function($event) {
             if ($event.target.composing) {
               return
@@ -42542,7 +42560,7 @@ var render = function() {
       _vm._v(" "),
       _vm.creditcardError
         ? _c("p", { staticClass: "text-red-900 text-sm py-2" }, [
-            _vm._v("\n      *Invalid credit card.\n    ")
+            _vm._v("\n            *Invalid credit card.\n        ")
           ])
         : _vm._e()
     ]),
@@ -42568,9 +42586,7 @@ var render = function() {
               attrs: { type: "text", id: "cvv", maxlength: "3" },
               domProps: { value: _vm.cvv },
               on: {
-                click: function($event) {
-                  _vm.cvvError = false
-                },
+                click: _vm.removeFunctions.removeCvvError,
                 input: function($event) {
                   if ($event.target.composing) {
                     return
@@ -42582,7 +42598,9 @@ var render = function() {
             _vm._v(" "),
             _vm.cvvError
               ? _c("p", { staticClass: "text-red-900 text-sm py-2" }, [
-                  _vm._v("\n          *Invalid CVV.\n        ")
+                  _vm._v(
+                    "\n                    *Invalid CVV.\n                "
+                  )
                 ])
               : _vm._e()
           ])
@@ -42652,6 +42670,11 @@ var render = function() {
               cvv: _vm.cvv,
               "cvv-error": _vm.cvvError,
               name: _vm.name,
+              "remove-functions": {
+                removeCvvError: _vm.removeCvvError,
+                removeNameError: _vm.removeNameError,
+                removeCreditCardError: _vm.removeCreditCardError
+              },
               "name-error": _vm.nameError,
               "pay-credit-card": _vm.payCreditCard
             }
