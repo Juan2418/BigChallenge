@@ -84,7 +84,7 @@ class PopularityController extends Controller
     {
         $products = array();
         for ($i = 0; $i < 5; $i++) {
-            $products[] = Product::find($ids[$i]->id);
+            $products[] = Product::with('ingredients')->find($ids[$i]->id);
         }
         return $products;
     }
