@@ -2,41 +2,70 @@
     <Main class="grid grid-cols-2 grid-cols-main bg-gray-200">
         <nav-bar></nav-bar>
         <section class="container h-screen overflow-y-scroll">
-            <section class="flex flex-col py-60">
-                <input type="text" @click="error = false" v-model="creditCardNumber" class="text-xl h-10" maxlength="20">
-                <p v-if="error" class="text-red-900 text-sm py-2">
-                    *Invalid credit card.
-                </p>
-                <button @click="payCreditCard" class="btn btn-primary py-4">Pay</button>
-            </section>
-            <payment-validation-modals :error="requestError" :show-error="showError" :show-success="showSuccess"/>
+            <credit-card-form :credit-card-number="creditCardNumber"
+                              :creditcard-error="creditcardError"
+                              :cvv="cvv"
+                              :cvv-error="cvvError"
+                              :name="name"
+                              :name-error="nameError"
+                              :pay-credit-card="payCreditCard"
+            />
+            <payment-validation-modals :error="requestError"
+                                       :show-error="showError"
+                                       :show-success="showSuccess"
+            />
         </section>
     </Main>
 </template>
 
 <script>
 import NavBar from "../components/NavBar";
-import {creditCardIsValid} from '../utilities.js';
+import PaymentValidationModals from "./PaymentValidationModals";
+import {creditCardIsValid, goToHome, sendOrder} from '../utilities.js';
+import CreditCardForm from "./CreditCardForm";
 
 export default {
     name: "creditcard-payment",
-    components: {NavBar},
+    components: {CreditCardForm, PaymentValidationModals, NavBar},
     data() {
         return {
+            products: Store.productsToOrder,
             creditCardNumber: "",
-            error: false,
+            creditcardError: false,
             requestError: "",
             showError: false,
-            showSuccess: false
+            showSuccess: false,
+            cvv: "",
+            expiration: "",
+            name: "",
+            nameError: false,
+            cvvError: false
         }
     },
     methods: {
         creditCardIsValid,
+        sendOrder,
+        goToHome,
+        CVVOnlyDigits() {
+            return /^\d+$/g.test(this.cvv);
+        },
+        fieldsAreValid() {
+            if (this.name.length === 0) {
+                this.nameError = true;
+            }
+            if (this.cvv.length != 3 || !this.CVVOnlyDigits()) {
+                this.cvvError = true;
+            }
+            if (this.creditCardNumber.length === 0 || !creditCardIsValid(this.creditCardNumber)) {
+                this.creditcardError = true;
+            }
+            return !(this.cvvError || this.creditcardError || this.nameError);
+        },
         async payCreditCard() {
-            if (!creditCardIsValid(this.creditCardNumber) || this.creditCardNumber.length === 0) {
-                this.error = true;
+            if (!this.fieldsAreValid()) {
                 return;
             }
+
             let response = await this.sendOrder(this.products);
             if (response === 200) {
                 Store.productsToOrder = [];
@@ -52,6 +81,3 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
