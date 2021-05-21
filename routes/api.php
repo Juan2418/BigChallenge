@@ -19,14 +19,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/categories', function() {
+Route::get('/categories', function () {
     return Category::with('products.ingredients')->latest()->get();
 });
 
 Route::post('/order', 'App\Http\Controllers\OrderController@store');
 
 
-Route::get('/product-popularity/chart', 'App\Http\Controllers\PopularityController@chartData');
-Route::get('/product-popularity/names', 'App\Http\Controllers\PopularityController@names');
-Route::get('/product-popularity/totals', 'App\Http\Controllers\PopularityController@totalOrderCount');
-Route::get('/product-popularity/', 'App\Http\Controllers\PopularityController@index');
+Route::group(['prefix' => 'product-popularity', 'as' => 'product-popularity'], function () {
+    Route::get('/chart', 'App\Http\Controllers\PopularityController@chartData');
+    Route::get('/names', 'App\Http\Controllers\PopularityController@names');
+    Route::get('/totals', 'App\Http\Controllers\PopularityController@totalOrderCount');
+    Route::get('/', 'App\Http\Controllers\PopularityController@index');
+});
+
