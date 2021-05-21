@@ -67,7 +67,13 @@ export default {
             this.show = true;
         },
         goToHome,
+        prepareProducts() {
+            this.products.forEach(product => {
+                product.ingredients = product.ingredients.filter(item => item.checked);
+            });
+        },
         async payCash() {
+            this.prepareProducts();
             let response = await this.sendOrder(this.products);
             if (response === 200) {
                 Store.productsToOrder = [];

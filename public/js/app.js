@@ -2308,6 +2308,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.show = true;
     },
     goToHome: _utilities_js__WEBPACK_IMPORTED_MODULE_5__.goToHome,
+    prepareProducts: function prepareProducts() {
+      this.products.forEach(function (product) {
+        product.ingredients = product.ingredients.filter(function (item) {
+          return item.checked;
+        });
+      });
+    },
     payCash: function payCash() {
       var _this = this;
 
@@ -2317,10 +2324,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _this.prepareProducts();
+
+                _context.next = 3;
                 return _this.sendOrder(_this.products);
 
-              case 2:
+              case 3:
                 response = _context.sent;
 
                 if (response === 200) {
@@ -2335,7 +2344,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.showError = true;
                 }
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -2673,13 +2682,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var ingredients = this.product.ingredients;
-
-    for (var i = 0; i < ingredients.length; i++) {
-      ingredients[i].checked = true;
-    }
-
-    this.ingredients = ingredients;
+    this.ingredients = this.product.ingredients;
   },
   methods: {
     increaseQuantity: function increaseQuantity() {
@@ -2696,9 +2699,7 @@ __webpack_require__.r(__webpack_exports__);
           image: this.product.image,
           cost: this.totalCost,
           description: this.product.description,
-          ingredients: this.ingredients.filter(function (item) {
-            return item.checked;
-          }),
+          ingredients: this.ingredients,
           quantity: this.quantity
         };
         Store.productsToOrder.push(productToAdd);
@@ -2965,9 +2966,7 @@ __webpack_require__.r(__webpack_exports__);
           image: this.product.image,
           cost: this.totalCost,
           description: this.product.description,
-          ingredients: this.ingredients.filter(function (item) {
-            return item.checked;
-          }),
+          ingredients: this.ingredients,
           quantity: this.quantity
         };
         Store.productsToOrder.push(productToAdd);
@@ -7834,7 +7833,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.layout-product[data-v-01895c74] {\r\n    grid-template-areas: \"a b\";\n}\n.image-product[data-v-01895c74] {\r\n    grid-area: b;\n}\n.quantity-section[data-v-01895c74] {\r\n    grid-template-areas: \"a b\";\n}\n.quantity-label[data-v-01895c74] {\r\n    grid-area: b;\n}\n@media (max-width: 770px) {\n.layout-product[data-v-01895c74] {\r\n        grid-template-areas: \"b\" \"a\";\n}\n.quantity-section[data-v-01895c74] {\r\n        grid-template-areas: \"a\" \"b\";\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.layout-product[data-v-01895c74] {\n    grid-template-areas: \"a b\";\n}\n.image-product[data-v-01895c74] {\n    grid-area: b;\n}\n.quantity-section[data-v-01895c74] {\n    grid-template-areas: \"a b\";\n}\n.quantity-label[data-v-01895c74] {\n    grid-area: b;\n}\n@media (max-width: 770px) {\n.layout-product[data-v-01895c74] {\n        grid-template-areas: \"b\" \"a\";\n}\n.quantity-section[data-v-01895c74] {\n        grid-template-areas: \"a\" \"b\";\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -7858,7 +7857,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.layout-product[data-v-30507a8f] {\r\n    grid-template-areas: \"a b\";\n}\n.image-product[data-v-30507a8f] {\r\n    grid-area: b;\n}\n.quantity-section[data-v-30507a8f] {\r\n    grid-template-areas: \"a b\";\n}\n.quantity-label[data-v-30507a8f] {\r\n    grid-area: b;\n}\n@media (max-width: 770px) {\n.layout-product[data-v-30507a8f] {\r\n        grid-template-areas: \"b\" \"a\";\n}\n.quantity-section[data-v-30507a8f] {\r\n        grid-template-areas: \"a\" \"b\";\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.layout-product[data-v-30507a8f] {\n    grid-template-areas: \"a b\";\n}\n.image-product[data-v-30507a8f] {\n    grid-area: b;\n}\n.quantity-section[data-v-30507a8f] {\n    grid-template-areas: \"a b\";\n}\n.quantity-label[data-v-30507a8f] {\n    grid-area: b;\n}\n@media (max-width: 770px) {\n.layout-product[data-v-30507a8f] {\n        grid-template-areas: \"b\" \"a\";\n}\n.quantity-section[data-v-30507a8f] {\n        grid-template-areas: \"a\" \"b\";\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -17,6 +17,9 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
+        foreach(Category::all() as $category) {
+            $category->update(['image' => 'images/' . array_rand(['hamburger', 'coke', 'pizza', 'fries']) . '.jpg']);
+        }
         for ($i = 0; $i < 30; $i++) {
             DB::table('category_product')->insert([
                 [
