@@ -1,6 +1,6 @@
 <template>
     <article>
-        <p class="font-bold text-2xl my-4">Your products</p>
+        <p class="font-bold text-2xl my-4 w-full">Your products</p>
         <product-list-horizontal :products="products"/>
         <section class="py-4">
             <p>Total: <span class="font-bold">{{ amountToPay }}</span></p>

@@ -42303,7 +42303,7 @@ var render = function() {
           _vm.$mq !== "sm"
             ? _c("img", {
                 staticClass:
-                  "h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l\n                       bg-primary\n                       border-4 border-primary text-center overflow-hidden",
+                  "h-48 lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l\n                       bg-primary\n                       border-4 border-primary text-center overflow-hidden",
                 attrs: { src: product.image, title: "Product " + product.name }
               })
             : _vm._e(),
@@ -42880,7 +42880,7 @@ var render = function() {
   return _c(
     "article",
     [
-      _c("p", { staticClass: "font-bold text-2xl my-4" }, [
+      _c("p", { staticClass: "font-bold text-2xl my-4 w-full" }, [
         _vm._v("Your products")
       ]),
       _vm._v(" "),
