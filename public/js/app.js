@@ -2002,6 +2002,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'nav-bar',
@@ -42063,7 +42064,7 @@ var render = function() {
       _vm._l(_vm.productsToOrder, function(product) {
         return _c("img", {
           staticClass:
-            "rounded-full md:p-2\n                w-2/3 md:w-1/4\n                h-16\n                md:border-4\n                scale-on-hover\n                animate__animated animate__slideInDown",
+            "rounded-full md:p-2\n                w-2/3 md:w-1/4\n                my-2\n                h-16\n                md:border-4\n                scale-on-hover\n                animate__animated animate__slideInDown",
           attrs: { src: product.image, alt: product.name },
           on: {
             click: function($event) {
