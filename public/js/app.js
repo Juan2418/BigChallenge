@@ -2257,6 +2257,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2359,6 +2362,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _utilities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utilities */ "./resources/js/utilities.js");
 //
 //
 //
@@ -2406,27 +2410,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'credit-card-form',
   props: {
-    creditCardNumber: {},
-    creditcardError: {},
-    cvv: {},
-    cvvError: {},
-    name: {},
-    nameError: {},
     payCreditCard: {},
     removeFunctions: {}
   },
-  computed: {
-    cvvErrorComputed: function cvvErrorComputed() {
-      return this.cvvError;
+  data: function data() {
+    return {
+      cvv: "",
+      expiration: "",
+      name: "",
+      nameError: false,
+      cvvError: false,
+      creditCardNumber: "",
+      creditcardError: false
+    };
+  },
+  methods: {
+    CVVOnlyDigits: function CVVOnlyDigits() {
+      return /^\d+$/g.test(this.cvv);
     },
-    creditcardErrorComputed: function creditcardErrorComputed() {
-      return this.creditcardError;
+    hasErrors: function hasErrors() {
+      return this.cvvError || this.creditcardError || this.nameError;
     },
-    nameErrorComputed: function nameErrorComputed() {
-      return this.nameError;
+    fieldsAreValid: function fieldsAreValid() {
+      if (this.name.length === 0) {
+        this.nameError = true;
+      }
+
+      if (this.cvv.length != 3 || !this.CVVOnlyDigits()) {
+        this.cvvError = true;
+      }
+
+      if (this.creditCardNumber.length === 0 || !(0,_utilities__WEBPACK_IMPORTED_MODULE_0__.creditCardIsValid)(this.creditCardNumber)) {
+        this.creditcardError = true;
+      }
+
+      return !this.hasErrors();
+    },
+    validateAndEmit: function validateAndEmit() {
+      if (this.fieldsAreValid()) {
+        this.$emit('valid');
+      }
     }
   }
 });
@@ -2471,12 +2498,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2491,49 +2512,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       products: Store.productsToOrder,
-      creditCardNumber: "",
-      creditcardError: false,
       requestError: "",
       showError: false,
-      showSuccess: false,
-      cvv: "",
-      expiration: "",
-      name: "",
-      nameError: false,
-      cvvError: false
+      showSuccess: false
     };
   },
   methods: {
-    creditCardIsValid: _utilities_js__WEBPACK_IMPORTED_MODULE_3__.creditCardIsValid,
     sendOrder: _utilities_js__WEBPACK_IMPORTED_MODULE_3__.sendOrder,
     goToHome: _utilities_js__WEBPACK_IMPORTED_MODULE_3__.goToHome,
-    removeCreditCardError: function removeCreditCardError() {
-      this.creditcardError = false;
-    },
-    removeNameError: function removeNameError() {
-      this.nameError = false;
-    },
-    removeCvvError: function removeCvvError() {
-      this.cvvError = false;
-    },
-    CVVOnlyDigits: function CVVOnlyDigits() {
-      return /^\d+$/g.test(this.cvv);
-    },
-    fieldsAreValid: function fieldsAreValid() {
-      if (this.name.length === 0) {
-        this.nameError = true;
-      }
-
-      if (this.cvv.length != 3 || !this.CVVOnlyDigits()) {
-        this.cvvError = true;
-      }
-
-      if (this.creditCardNumber.length === 0 || !(0,_utilities_js__WEBPACK_IMPORTED_MODULE_3__.creditCardIsValid)(this.creditCardNumber)) {
-        this.creditcardError = true;
-      }
-
-      return !(this.cvvError || this.creditcardError || this.nameError);
-    },
     payCreditCard: function payCreditCard() {
       var _this = this;
 
@@ -2543,18 +2529,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (_this.fieldsAreValid()) {
-                  _context.next = 2;
-                  break;
-                }
-
-                return _context.abrupt("return");
-
-              case 2:
-                _context.next = 4;
+                _context.next = 2;
                 return _this.sendOrder(_this.products);
 
-              case 4:
+              case 2:
                 response = _context.sent;
 
                 if (response === 200) {
@@ -2569,7 +2547,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.showError = true;
                 }
 
-              case 6:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -42408,7 +42386,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "section",
-        { staticClass: "container h-screen overflow-y-scroll" },
+        { staticClass: "container h-screen overflow-y-scroll w-full" },
         [
           _c("order-form", {
             attrs: {
@@ -42477,6 +42455,11 @@ var render = function() {
               error: _vm.error,
               "show-error": _vm.showError,
               "show-success": _vm.showSuccess
+            },
+            on: {
+              closeError: function($event) {
+                _vm.showError = false
+              }
             }
           })
         ],
@@ -42526,7 +42509,9 @@ var render = function() {
         attrs: { type: "text", id: "name" },
         domProps: { value: _vm.name },
         on: {
-          click: _vm.removeFunctions.removeNameError,
+          click: function($event) {
+            _vm.nameError = false
+          },
           input: function($event) {
             if ($event.target.composing) {
               return
@@ -42559,7 +42544,9 @@ var render = function() {
         attrs: { type: "text", id: "number", maxlength: "20" },
         domProps: { value: _vm.creditCardNumber },
         on: {
-          click: _vm.removeFunctions.removeCreditCardError,
+          click: function($event) {
+            _vm.creditcardError = false
+          },
           input: function($event) {
             if ($event.target.composing) {
               return
@@ -42597,7 +42584,9 @@ var render = function() {
               attrs: { type: "text", id: "cvv", maxlength: "3" },
               domProps: { value: _vm.cvv },
               on: {
-                click: _vm.removeFunctions.removeCvvError,
+                click: function($event) {
+                  _vm.cvvError = false
+                },
                 input: function($event) {
                   if ($event.target.composing) {
                     return
@@ -42636,7 +42625,15 @@ var render = function() {
     _vm._v(" "),
     _c(
       "button",
-      { staticClass: "btn btn-primary py-4", on: { click: _vm.payCreditCard } },
+      {
+        staticClass: "btn btn-primary py-4",
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            return _vm.validateAndEmit($event)
+          }
+        }
+      },
       [_vm._v("Pay")]
     )
   ])
@@ -42674,28 +42671,18 @@ var render = function() {
         "section",
         { staticClass: "container h-screen overflow-y-scroll" },
         [
-          _c("credit-card-form", {
-            attrs: {
-              "credit-card-number": _vm.creditCardNumber,
-              "creditcard-error": _vm.creditcardError,
-              cvv: _vm.cvv,
-              "cvv-error": _vm.cvvError,
-              name: _vm.name,
-              "remove-functions": {
-                removeCvvError: _vm.removeCvvError,
-                removeNameError: _vm.removeNameError,
-                removeCreditCardError: _vm.removeCreditCardError
-              },
-              "name-error": _vm.nameError,
-              "pay-credit-card": _vm.payCreditCard
-            }
-          }),
+          _c("credit-card-form", { on: { valid: _vm.payCreditCard } }),
           _vm._v(" "),
           _c("payment-validation-modals", {
             attrs: {
               error: _vm.requestError,
               "show-error": _vm.showError,
               "show-success": _vm.showSuccess
+            },
+            on: {
+              closeError: function($event) {
+                _vm.showError = false
+              }
             }
           })
         ],
@@ -42963,7 +42950,7 @@ var render = function() {
                 {
                   on: {
                     close: function($event) {
-                      _vm.showError = false
+                      return _vm.$emit("closeError")
                     }
                   }
                 },

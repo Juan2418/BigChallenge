@@ -3,7 +3,7 @@
         <section class="flex flex-col w-full py-4">
             <label for="name">Your name:</label>
             <input type="text" id="name"
-                   @click="removeFunctions.removeNameError"
+                   @click="nameError = false"
                    v-model="name"
                    class="text-xl h-10">
             <p v-if="nameError" class="text-red-900 text-sm py-2">
@@ -13,7 +13,7 @@
         <section class="flex flex-col w-full py-2">
             <label for="number">CreditCard Number:</label>
             <input type="text" id="number"
-                   @click="removeFunctions.removeCreditCardError"
+                   @click="creditcardError = false"
                    v-model="creditCardNumber"
                    class="text-xl h-10 w-full"
                    maxlength="20">
@@ -27,7 +27,7 @@
                 <section class="w-full flex flex-col">
                     <input type="text"
                            id="cvv"
-                           @click="removeFunctions.removeCvvError"
+                           @click="cvvError = false"
                            v-model="cvv"
                            class="text-xl h-10"
                            maxlength="3">
@@ -42,26 +42,53 @@
                        :min="new Date().toJSON().slice(0,10)">
             </section>
         </section>
-        <button @click="payCreditCard" class="btn btn-primary py-4">Pay</button>
+        <button @click.prevent="validateAndEmit" class="btn btn-primary py-4">Pay</button>
     </form>
 </template>
 <script>
+import {creditCardIsValid} from "../utilities";
+
 export default {
     name: 'credit-card-form',
     props: {
-        creditCardNumber: {},
-        creditcardError: {},
-        cvv: {},
-        cvvError: {},
-        name: {},
-        nameError: {},
         payCreditCard: {},
         removeFunctions: {}
     },
-    computed: {
-        cvvErrorComputed() {return this.cvvError},
-        creditcardErrorComputed() {return this.creditcardError},
-        nameErrorComputed() {return this.nameError},
+    data() {
+        return {
+            cvv: "",
+            expiration: "",
+            name: "",
+            nameError: false,
+            cvvError: false,
+            creditCardNumber: "",
+            creditcardError: false,
+        }
+    },
+    methods: {
+        CVVOnlyDigits() {
+            return /^\d+$/g.test(this.cvv);
+        },
+        hasErrors() {
+            return (this.cvvError || this.creditcardError || this.nameError);
+        },
+        fieldsAreValid() {
+            if (this.name.length === 0) {
+                this.nameError = true;
+            }
+            if (this.cvv.length != 3 || !this.CVVOnlyDigits()) {
+                this.cvvError = true;
+            }
+            if (this.creditCardNumber.length === 0 || !creditCardIsValid(this.creditCardNumber)) {
+                this.creditcardError = true;
+            }
+            return !this.hasErrors();
+        },
+        validateAndEmit() {
+            if (this.fieldsAreValid()) {
+                this.$emit('valid');
+            }
+        }
     }
 }
 </script>

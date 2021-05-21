@@ -1,7 +1,7 @@
 <template>
     <Main class="grid grid-cols-2 grid-cols-main bg-gray-200">
         <nav-bar></nav-bar>
-        <section class="container h-screen overflow-y-scroll">
+        <section class="container h-screen overflow-y-scroll w-full">
             <order-form :amount-to-pay="amountToPay" :products="products" :show-payment-modal="showPaymentModal"/>
             <transition
                 enter-active-class="animate__animated animate__slideInUp"
@@ -15,7 +15,10 @@
                     </section>
                 </modal>
             </transition>
-            <payment-validation-modals :error="error" :show-error="showError" :show-success="showSuccess"/>
+            <payment-validation-modals :error="error"
+                                       :show-error="showError"
+                                       @closeError="showError = false"
+                                       :show-success="showSuccess"/>
         </section>
     </Main>
 </template>
