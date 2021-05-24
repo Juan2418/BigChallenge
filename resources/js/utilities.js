@@ -1,5 +1,8 @@
+import {isNavigationFailure} from "vue-router/src/util/errors";
+
 export const goToHome = () => {
-    SPA.$router.push('/');
+    SPA.$router.push('/')
+        .catch( err => isNavigationFailure(err) ? console.log("redirected") : console.error(err));
 }
 export const modifyProduct = (product, indexInProductList) => {
     product.indexInList = indexInProductList;

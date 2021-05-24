@@ -36,5 +36,8 @@ window.Store = new Vue({
 
 window.SPA = new Vue({
     el: '#app',
-    router
+    router,
+    data: {
+        previousRoute: "/"
+    }
 });

@@ -45,6 +45,7 @@
 import NumberInput from "../components/NumberInput";
 import NavBar from "../components/NavBar";
 import Checkbox from "../components/Checkbox";
+import {goToHome} from "../utilities";
 
 export default {
     components: {Checkbox, NavBar, NumberInput},
@@ -53,7 +54,8 @@ export default {
             product: Store.productToModify,
             ingredients: [],
             indexInList: -1,
-            quantity: Store.productToModify.quantity
+            quantity: Store.productToModify.quantity,
+            previousRoute: '/'
         }
     },
     computed: {
@@ -99,7 +101,22 @@ export default {
             this.removeSelfFromCart();
             this.addToCart();
             this.resetProductToModify();
-            SPA.$router.push('/');
+            goToHome();
+        },
+        previousViewWasCart() {
+            return SPA.previousRoute === '/cart';
+        },
+    },
+    beforeRouteEnter(to, from, next) {
+        SPA.previousRoute = from.path;
+        next();
+    },
+    beforeRouteLeave(to, from, next){
+        if (this.previousViewWasCart()) {
+            SPA.previousRoute = '/modify';
+            next('/cart');
+        } else {
+            next();
         }
     }
 }
