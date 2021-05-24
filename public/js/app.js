@@ -3234,9 +3234,9 @@ var modifyProduct = function modifyProduct(product) {
   SPA.$router.push('/modify');
 };
 
-function getError(err) {
+var getError = function getError(err) {
   return err.response.data.errors.products[0];
-}
+};
 
 var sendOrder = function sendOrder(products) {
   return axios.post('api/order', {
