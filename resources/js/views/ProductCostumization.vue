@@ -71,7 +71,7 @@ export default {
                     image: this.product.image,
                     cost: this.totalCost,
                     description: this.product.description,
-                    ingredients: this.ingredients.filter(item => item.checked),
+                    ingredients: this.ingredients,
                     quantity: this.quantity
                 };
                 Store.productsToOrder.push(productToAdd);

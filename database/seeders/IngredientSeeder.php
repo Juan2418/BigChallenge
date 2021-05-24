@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Ingredient;
+use App\Models\Ingredient;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class IngredientSeeder extends Seeder
 {
@@ -14,6 +16,12 @@ class IngredientSeeder extends Seeder
      */
     public function run()
     {
-        Ingredient::factory()->count(5)->create();
+        for ($i = 0; $i < 30; $i++) {
+            DB::table('ingredient_product')->insert([
+                [
+                    'product_id' => Product::all()->random()->id,
+                    'ingredient_id' => Ingredient::all()->random()->id
+                ]]);
+        }
     }
 }

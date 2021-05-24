@@ -48,13 +48,11 @@ import Checkbox from "../components/Checkbox";
 
 export default {
     components: {Checkbox, NavBar, NumberInput},
-    props: {
-        productIndexInCart: Number
-    },
     data() {
         return {
             product: Store.productToModify,
             ingredients: [],
+            indexInList: -1,
             quantity: Store.productToModify.quantity
         }
     },
@@ -64,11 +62,8 @@ export default {
         }
     },
     mounted() {
-        let ingredients = this.product.ingredients;
-        for (let i = 0; i < ingredients.length; i++) {
-            ingredients[i].checked = true;
-        }
-        this.ingredients = ingredients;
+        this.ingredients = this.product.ingredients;
+        this.indexInList = this.product.indexInList;
     },
     methods: {
         increaseQuantity() {
@@ -85,14 +80,17 @@ export default {
                     image: this.product.image,
                     cost: this.totalCost,
                     description: this.product.description,
-                    ingredients: this.ingredients.filter(item => item.checked),
+                    ingredients: this.ingredients,
                     quantity: this.quantity
                 };
                 Store.productsToOrder.push(productToAdd);
             }
         },
+        getProductIndex() {
+
+        },
         removeSelfFromCart() {
-            Store.productsToOrder.splice(this.productIndexInCart);
+            Store.productsToOrder.splice(this.indexInList, 1);
         },
         resetProductToModify() {
             Store.productsToModify = null;

@@ -24,10 +24,15 @@
             </a>
         </router-link>
 
-        <img v-for="product in productsToOrder" :src="product.image" :alt="product.name"
-             class="rounded-full md:p-2 w-2/3 md:w-1/4 md:border-4
-                    scale-on-hover animate__animated animate__slideInDown"
-             @click="modifyProduct(product)"
+        <img v-for="(product, index) in productsToOrder" :src="product.image" :alt="product.name"
+             class="rounded-full md:p-2
+                    w-2/3 md:w-1/4
+                    my-2
+                    h-16
+                    md:border-4
+                    scale-on-hover
+                    animate__animated animate__slideInDown"
+             @click="modifyProduct(product, index)"
         >
     </nav>
 </template>

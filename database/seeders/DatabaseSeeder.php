@@ -17,10 +17,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        Ingredient::factory()->count(10)->create();
-        Category::factory()->has(Product::factory()->has(Ingredient::factory()->count(5))->count(5))->count(5)->create();
-        Product::factory()->has(Ingredient::factory()->count(5))->count(10)->create();
-        Order::factory()->has(Product::factory()->count(5))->count(15)->create();
+
+        Order::factory()->count(7)->create();
+        Category::factory()
+            ->has(
+                Product::factory()
+                    ->has(
+                        Ingredient::factory()->count(5)
+                    )
+                    ->count(5)
+            )->count(5)
+            ->create();
+
+        $this->call([
+            ProductSeeder::class,
+            CategorySeeder::class,
+            OrderSeeder::class
+        ]);
     }
 }

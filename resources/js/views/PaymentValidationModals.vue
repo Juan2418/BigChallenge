@@ -4,7 +4,7 @@
             enter-active-class="animate__animated animate__jackInTheBox"
             leave-active-class="animate__animated animate__slideOutDown"
         >
-            <modal v-if="showError" @close="showError = false">
+            <modal v-if="showError" @close="$emit('closeError')">
                 <header slot="header" class="font-bold text-red-800 text-center">An error has occurred</header>
                 <section slot="body" class="grid grid-cols-1 gap-2 justify-items-center md:grid-cols-2 w-full">
                     <img :src="'icons/error_red.svg'" alt="error" class="w-full">

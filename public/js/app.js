@@ -1998,6 +1998,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'nav-bar',
@@ -2253,6 +2258,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2301,6 +2309,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.show = true;
     },
     goToHome: _utilities_js__WEBPACK_IMPORTED_MODULE_5__.goToHome,
+    prepareProducts: function prepareProducts() {
+      this.products.forEach(function (product) {
+        product.ingredients = product.ingredients.filter(function (item) {
+          return item.checked;
+        });
+      });
+    },
     payCash: function payCash() {
       var _this = this;
 
@@ -2310,10 +2325,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _this.prepareProducts();
+
+                _context.next = 3;
                 return _this.sendOrder(_this.products);
 
-              case 2:
+              case 3:
                 response = _context.sent;
 
                 if (response === 200) {
@@ -2328,7 +2345,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.showError = true;
                 }
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -2355,6 +2372,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _utilities__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utilities */ "./resources/js/utilities.js");
 //
 //
 //
@@ -2402,27 +2420,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'credit-card-form',
   props: {
-    creditCardNumber: {},
-    creditcardError: {},
-    cvv: {},
-    cvvError: {},
-    name: {},
-    nameError: {},
     payCreditCard: {},
     removeFunctions: {}
   },
-  computed: {
-    cvvErrorComputed: function cvvErrorComputed() {
-      return this.cvvError;
+  data: function data() {
+    return {
+      cvv: "",
+      expiration: "",
+      name: "",
+      nameError: false,
+      cvvError: false,
+      creditCardNumber: "",
+      creditcardError: false
+    };
+  },
+  methods: {
+    CVVOnlyDigits: function CVVOnlyDigits() {
+      return /^\d+$/g.test(this.cvv);
     },
-    creditcardErrorComputed: function creditcardErrorComputed() {
-      return this.creditcardError;
+    hasErrors: function hasErrors() {
+      return this.cvvError || this.creditcardError || this.nameError;
     },
-    nameErrorComputed: function nameErrorComputed() {
-      return this.nameError;
+    fieldsAreValid: function fieldsAreValid() {
+      if (this.name.length === 0) {
+        this.nameError = true;
+      }
+
+      if (this.cvv.length != 3 || !this.CVVOnlyDigits()) {
+        this.cvvError = true;
+      }
+
+      if (this.creditCardNumber.length === 0 || !(0,_utilities__WEBPACK_IMPORTED_MODULE_0__.creditCardIsValid)(this.creditCardNumber)) {
+        this.creditcardError = true;
+      }
+
+      return !this.hasErrors();
+    },
+    validateAndEmit: function validateAndEmit() {
+      if (this.fieldsAreValid()) {
+        this.$emit('valid');
+      }
     }
   }
 });
@@ -2467,12 +2508,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2487,49 +2522,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       products: Store.productsToOrder,
-      creditCardNumber: "",
-      creditcardError: false,
       requestError: "",
       showError: false,
-      showSuccess: false,
-      cvv: "",
-      expiration: "",
-      name: "",
-      nameError: false,
-      cvvError: false
+      showSuccess: false
     };
   },
   methods: {
-    creditCardIsValid: _utilities_js__WEBPACK_IMPORTED_MODULE_3__.creditCardIsValid,
     sendOrder: _utilities_js__WEBPACK_IMPORTED_MODULE_3__.sendOrder,
     goToHome: _utilities_js__WEBPACK_IMPORTED_MODULE_3__.goToHome,
-    removeCreditCardError: function removeCreditCardError() {
-      this.creditcardError = false;
-    },
-    removeNameError: function removeNameError() {
-      this.nameError = false;
-    },
-    removeCvvError: function removeCvvError() {
-      this.cvvError = false;
-    },
-    CVVOnlyDigits: function CVVOnlyDigits() {
-      return /^\d+$/g.test(this.cvv);
-    },
-    fieldsAreValid: function fieldsAreValid() {
-      if (this.name.length === 0) {
-        this.nameError = true;
-      }
-
-      if (this.cvv.length != 3 || !this.CVVOnlyDigits()) {
-        this.cvvError = true;
-      }
-
-      if (this.creditCardNumber.length === 0 || !(0,_utilities_js__WEBPACK_IMPORTED_MODULE_3__.creditCardIsValid)(this.creditCardNumber)) {
-        this.creditcardError = true;
-      }
-
-      return !(this.cvvError || this.creditcardError || this.nameError);
-    },
     payCreditCard: function payCreditCard() {
       var _this = this;
 
@@ -2539,18 +2539,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (_this.fieldsAreValid()) {
-                  _context.next = 2;
-                  break;
-                }
-
-                return _context.abrupt("return");
-
-              case 2:
-                _context.next = 4;
+                _context.next = 2;
                 return _this.sendOrder(_this.products);
 
-              case 4:
+              case 2:
                 response = _context.sent;
 
                 if (response === 200) {
@@ -2565,7 +2557,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.showError = true;
                 }
 
-              case 6:
+              case 4:
               case "end":
                 return _context.stop();
             }
@@ -2675,13 +2667,11 @@ __webpack_require__.r(__webpack_exports__);
     NavBar: _components_NavBar__WEBPACK_IMPORTED_MODULE_1__.default,
     NumberInput: _components_NumberInput__WEBPACK_IMPORTED_MODULE_0__.default
   },
-  props: {
-    productIndexInCart: Number
-  },
   data: function data() {
     return {
       product: Store.productToModify,
       ingredients: [],
+      indexInList: -1,
       quantity: Store.productToModify.quantity
     };
   },
@@ -2691,13 +2681,8 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    var ingredients = this.product.ingredients;
-
-    for (var i = 0; i < ingredients.length; i++) {
-      ingredients[i].checked = true;
-    }
-
-    this.ingredients = ingredients;
+    this.ingredients = this.product.ingredients;
+    this.indexInList = this.product.indexInList;
   },
   methods: {
     increaseQuantity: function increaseQuantity() {
@@ -2714,16 +2699,15 @@ __webpack_require__.r(__webpack_exports__);
           image: this.product.image,
           cost: this.totalCost,
           description: this.product.description,
-          ingredients: this.ingredients.filter(function (item) {
-            return item.checked;
-          }),
+          ingredients: this.ingredients,
           quantity: this.quantity
         };
         Store.productsToOrder.push(productToAdd);
       }
     },
+    getProductIndex: function getProductIndex() {},
     removeSelfFromCart: function removeSelfFromCart() {
-      Store.productsToOrder.splice(this.productIndexInCart);
+      Store.productsToOrder.splice(this.indexInList, 1);
     },
     resetProductToModify: function resetProductToModify() {
       Store.productsToModify = null;
@@ -2864,6 +2848,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2982,9 +2967,7 @@ __webpack_require__.r(__webpack_exports__);
           image: this.product.image,
           cost: this.totalCost,
           description: this.product.description,
-          ingredients: this.ingredients.filter(function (item) {
-            return item.checked;
-          }),
+          ingredients: this.ingredients,
           quantity: this.quantity
         };
         Store.productsToOrder.push(productToAdd);
@@ -3246,14 +3229,15 @@ __webpack_require__.r(__webpack_exports__);
 var goToHome = function goToHome() {
   SPA.$router.push('/');
 };
-var modifyProduct = function modifyProduct(product) {
+var modifyProduct = function modifyProduct(product, indexInProductList) {
+  product.indexInList = indexInProductList;
   Store.productToModify = product;
   SPA.$router.push('/modify');
 };
 
-function getError(err) {
+var getError = function getError(err) {
   return err.response.data.errors.products[0];
-}
+};
 
 var sendOrder = function sendOrder(products) {
   return axios.post('api/order', {
@@ -7827,7 +7811,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-438ffe92]{\n    height: -webkit-min-content;\n    height: -moz-min-content;\n    height: min-content;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.card[data-v-438ffe92]{\n    height: 20vh;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -7851,7 +7835,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.layout-product[data-v-01895c74] {\r\n    grid-template-areas: \"a b\";\n}\n.image-product[data-v-01895c74] {\r\n    grid-area: b;\n}\n.quantity-section[data-v-01895c74] {\r\n    grid-template-areas: \"a b\";\n}\n.quantity-label[data-v-01895c74] {\r\n    grid-area: b;\n}\n@media (max-width: 770px) {\n.layout-product[data-v-01895c74] {\r\n        grid-template-areas: \"b\" \"a\";\n}\n.quantity-section[data-v-01895c74] {\r\n        grid-template-areas: \"a\" \"b\";\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.layout-product[data-v-01895c74] {\n    grid-template-areas: \"a b\";\n}\n.image-product[data-v-01895c74] {\n    grid-area: b;\n}\n.quantity-section[data-v-01895c74] {\n    grid-template-areas: \"a b\";\n}\n.quantity-label[data-v-01895c74] {\n    grid-area: b;\n}\n@media (max-width: 770px) {\n.layout-product[data-v-01895c74] {\n        grid-template-areas: \"b\" \"a\";\n}\n.quantity-section[data-v-01895c74] {\n        grid-template-areas: \"a\" \"b\";\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -7875,7 +7859,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.layout-product[data-v-30507a8f] {\r\n    grid-template-areas: \"a b\";\n}\n.image-product[data-v-30507a8f] {\r\n    grid-area: b;\n}\n.quantity-section[data-v-30507a8f] {\r\n    grid-template-areas: \"a b\";\n}\n.quantity-label[data-v-30507a8f] {\r\n    grid-area: b;\n}\n@media (max-width: 770px) {\n.layout-product[data-v-30507a8f] {\r\n        grid-template-areas: \"b\" \"a\";\n}\n.quantity-section[data-v-30507a8f] {\r\n        grid-template-areas: \"a\" \"b\";\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.layout-product[data-v-30507a8f] {\n    grid-template-areas: \"a b\";\n}\n.image-product[data-v-30507a8f] {\n    grid-area: b;\n}\n.quantity-section[data-v-30507a8f] {\n    grid-template-areas: \"a b\";\n}\n.quantity-label[data-v-30507a8f] {\n    grid-area: b;\n}\n@media (max-width: 770px) {\n.layout-product[data-v-30507a8f] {\n        grid-template-areas: \"b\" \"a\";\n}\n.quantity-section[data-v-30507a8f] {\n        grid-template-areas: \"a\" \"b\";\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -42078,14 +42062,14 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._l(_vm.productsToOrder, function(product) {
+      _vm._l(_vm.productsToOrder, function(product, index) {
         return _c("img", {
           staticClass:
-            "rounded-full md:p-2 w-2/3 md:w-1/4 md:border-4\n                scale-on-hover animate__animated animate__slideInDown",
+            "rounded-full md:p-2\n                w-2/3 md:w-1/4\n                my-2\n                h-16\n                md:border-4\n                scale-on-hover\n                animate__animated animate__slideInDown",
           attrs: { src: product.image, alt: product.name },
           on: {
             click: function($event) {
-              return _vm.modifyProduct(product)
+              return _vm.modifyProduct(product, index)
             }
           }
         })
@@ -42236,7 +42220,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "flex w-full md:w-auto m-1 md:m-6 card",
+      staticClass: "flex w-full md:w-auto m-1 md:m-6",
       on: {
         click: function($event) {
           return _vm.setCurrentProductToAdd()
@@ -42252,7 +42236,7 @@ var render = function() {
         },
         [
           _c("img", {
-            staticClass: "w-full md:w-1/2",
+            staticClass: "w-full md:w-1/2 h-52",
             attrs: { src: _vm.product.image, alt: _vm.product.name + " Image" }
           }),
           _vm._v(" "),
@@ -42320,7 +42304,7 @@ var render = function() {
           _vm.$mq !== "sm"
             ? _c("img", {
                 staticClass:
-                  "h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l\n                       bg-primary\n                       border-4 border-primary text-center overflow-hidden",
+                  "h-48 lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l\n                       bg-primary\n                       border-4 border-primary text-center overflow-hidden",
                 attrs: { src: product.image, title: "Product " + product.name }
               })
             : _vm._e(),
@@ -42403,7 +42387,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "section",
-        { staticClass: "container h-screen overflow-y-scroll" },
+        { staticClass: "container h-screen overflow-y-scroll w-full" },
         [
           _c("order-form", {
             attrs: {
@@ -42472,6 +42456,11 @@ var render = function() {
               error: _vm.error,
               "show-error": _vm.showError,
               "show-success": _vm.showSuccess
+            },
+            on: {
+              closeError: function($event) {
+                _vm.showError = false
+              }
             }
           })
         ],
@@ -42521,7 +42510,9 @@ var render = function() {
         attrs: { type: "text", id: "name" },
         domProps: { value: _vm.name },
         on: {
-          click: _vm.removeFunctions.removeNameError,
+          click: function($event) {
+            _vm.nameError = false
+          },
           input: function($event) {
             if ($event.target.composing) {
               return
@@ -42554,7 +42545,9 @@ var render = function() {
         attrs: { type: "text", id: "number", maxlength: "20" },
         domProps: { value: _vm.creditCardNumber },
         on: {
-          click: _vm.removeFunctions.removeCreditCardError,
+          click: function($event) {
+            _vm.creditcardError = false
+          },
           input: function($event) {
             if ($event.target.composing) {
               return
@@ -42592,7 +42585,9 @@ var render = function() {
               attrs: { type: "text", id: "cvv", maxlength: "3" },
               domProps: { value: _vm.cvv },
               on: {
-                click: _vm.removeFunctions.removeCvvError,
+                click: function($event) {
+                  _vm.cvvError = false
+                },
                 input: function($event) {
                   if ($event.target.composing) {
                     return
@@ -42631,7 +42626,15 @@ var render = function() {
     _vm._v(" "),
     _c(
       "button",
-      { staticClass: "btn btn-primary py-4", on: { click: _vm.payCreditCard } },
+      {
+        staticClass: "btn btn-primary py-4",
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            return _vm.validateAndEmit($event)
+          }
+        }
+      },
       [_vm._v("Pay")]
     )
   ])
@@ -42669,28 +42672,18 @@ var render = function() {
         "section",
         { staticClass: "container h-screen overflow-y-scroll" },
         [
-          _c("credit-card-form", {
-            attrs: {
-              "credit-card-number": _vm.creditCardNumber,
-              "creditcard-error": _vm.creditcardError,
-              cvv: _vm.cvv,
-              "cvv-error": _vm.cvvError,
-              name: _vm.name,
-              "remove-functions": {
-                removeCvvError: _vm.removeCvvError,
-                removeNameError: _vm.removeNameError,
-                removeCreditCardError: _vm.removeCreditCardError
-              },
-              "name-error": _vm.nameError,
-              "pay-credit-card": _vm.payCreditCard
-            }
-          }),
+          _c("credit-card-form", { on: { valid: _vm.payCreditCard } }),
           _vm._v(" "),
           _c("payment-validation-modals", {
             attrs: {
               error: _vm.requestError,
               "show-error": _vm.showError,
               "show-success": _vm.showSuccess
+            },
+            on: {
+              closeError: function($event) {
+                _vm.showError = false
+              }
             }
           })
         ],
@@ -42888,7 +42881,7 @@ var render = function() {
   return _c(
     "article",
     [
-      _c("p", { staticClass: "font-bold text-2xl my-4" }, [
+      _c("p", { staticClass: "font-bold text-2xl my-4 w-full" }, [
         _vm._v("Your products")
       ]),
       _vm._v(" "),
@@ -42958,7 +42951,7 @@ var render = function() {
                 {
                   on: {
                     close: function($event) {
-                      _vm.showError = false
+                      return _vm.$emit("closeError")
                     }
                   }
                 },
@@ -43063,7 +43056,7 @@ var render = function() {
                 "section",
                 {
                   staticClass:
-                    "flex flex-wrap\n                        px-1 py-2 w-full\n                        justify-center\n                        overflow-y-scroll"
+                    "flex flex-wrap\n                        px-1 py-2 w-full\n                        justify-center\n                        items-baseline\n                        overflow-y-scroll"
                 },
                 _vm._l(_vm.products, function(product, i) {
                   return _c("ProductList", {

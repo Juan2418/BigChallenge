@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 use App\Models\Category;
 use App\Models\Product;
 
@@ -26,8 +27,8 @@ class ProductFactory extends Factory
         return [
             'category_id' => Category::all()->random(),
             'name' => $this->faker->name(),
+            'image' => 'images/coke.jpg',
             'description' => $this->faker->text(),
-
         ];
     }
 }

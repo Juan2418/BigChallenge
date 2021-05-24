@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Category;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class CategorySeeder extends Seeder
 {
@@ -14,6 +17,18 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()->count(5)->create();
+        $images = ['hamburgers', 'coke', 'pizza', 'fries'];
+        foreach(Category::all() as $category) {
+            DB::table('categories')
+                ->where('id', '=', $category->id)
+                ->update(['image' => 'images/' . $images[array_rand($images)] . '.jpg']);
+        }
+//        for ($i = 0; $i < 30; $i++) {
+//            DB::table('category_product')->insert([
+//                [
+//                    'product_id' => Product::all()->random()->id,
+//                    'category_id' => Category::all()->random()->id
+//                ]]);
+//        }
     }
 }

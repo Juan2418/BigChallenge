@@ -67,7 +67,15 @@ class ProductCrudController extends CrudController
         CRUD::field('description');
         CRUD::field('cost')->type('number');
         CRUD::field('ingredients')->type('relationship')->label('Ingredients')->entity('ingredients');
-
+        $this->crud->addField([
+            'label' => "Product Image",
+            'name' => "image",
+            'type' => 'image',
+            'crop' => true, // set to true to allow cropping, false to disable
+            'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
+            // 'disk'      => 's3_bucket', // in case you need to show images from a different disk
+            'prefix'    => 'public/images' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
+        ]);
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:

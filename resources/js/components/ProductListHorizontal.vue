@@ -5,7 +5,7 @@
              @click="modifyProduct(product)"
         >
             <img v-if="$mq !== 'sm'"
-                class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l
+                class="h-48 lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l
                            bg-primary
                            border-4 border-primary text-center overflow-hidden"
                 :src="product.image"

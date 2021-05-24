@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Product;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ProductSeeder extends Seeder
 {
@@ -14,6 +16,12 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::factory()->count(5)->create();
+        $images = ['coke', 'hamburgers', 'pizza', 'fries'];
+
+        foreach(Product::all() as $product) {
+            DB::table('products')
+                ->where('id', '=', $product->id)
+                ->update(['image' => 'images/' . $images[array_rand($images)] . '.jpg']);
+        }
     }
 }
