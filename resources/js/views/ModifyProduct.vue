@@ -48,13 +48,11 @@ import Checkbox from "../components/Checkbox";
 
 export default {
     components: {Checkbox, NavBar, NumberInput},
-    props: {
-        productIndexInCart: Number
-    },
     data() {
         return {
             product: Store.productToModify,
             ingredients: [],
+            indexInList: -1,
             quantity: Store.productToModify.quantity
         }
     },
@@ -65,6 +63,7 @@ export default {
     },
     mounted() {
         this.ingredients = this.product.ingredients;
+        this.indexInList = this.product.indexInList;
     },
     methods: {
         increaseQuantity() {
@@ -87,8 +86,11 @@ export default {
                 Store.productsToOrder.push(productToAdd);
             }
         },
+        getProductIndex() {
+
+        },
         removeSelfFromCart() {
-            Store.productsToOrder.splice(this.productIndexInCart);
+            Store.productsToOrder.splice(this.indexInList, 1);
         },
         resetProductToModify() {
             Store.productsToModify = null;

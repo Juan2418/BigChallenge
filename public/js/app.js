@@ -2667,13 +2667,11 @@ __webpack_require__.r(__webpack_exports__);
     NavBar: _components_NavBar__WEBPACK_IMPORTED_MODULE_1__.default,
     NumberInput: _components_NumberInput__WEBPACK_IMPORTED_MODULE_0__.default
   },
-  props: {
-    productIndexInCart: Number
-  },
   data: function data() {
     return {
       product: Store.productToModify,
       ingredients: [],
+      indexInList: -1,
       quantity: Store.productToModify.quantity
     };
   },
@@ -2684,6 +2682,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.ingredients = this.product.ingredients;
+    this.indexInList = this.product.indexInList;
   },
   methods: {
     increaseQuantity: function increaseQuantity() {
@@ -2706,8 +2705,9 @@ __webpack_require__.r(__webpack_exports__);
         Store.productsToOrder.push(productToAdd);
       }
     },
+    getProductIndex: function getProductIndex() {},
     removeSelfFromCart: function removeSelfFromCart() {
-      Store.productsToOrder.splice(this.productIndexInCart);
+      Store.productsToOrder.splice(this.indexInList, 1);
     },
     resetProductToModify: function resetProductToModify() {
       Store.productsToModify = null;
@@ -3229,7 +3229,8 @@ __webpack_require__.r(__webpack_exports__);
 var goToHome = function goToHome() {
   SPA.$router.push('/');
 };
-var modifyProduct = function modifyProduct(product) {
+var modifyProduct = function modifyProduct(product, indexInProductList) {
+  product.indexInList = indexInProductList;
   Store.productToModify = product;
   SPA.$router.push('/modify');
 };
@@ -42061,14 +42062,14 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._l(_vm.productsToOrder, function(product) {
+      _vm._l(_vm.productsToOrder, function(product, index) {
         return _c("img", {
           staticClass:
             "rounded-full md:p-2\n                w-2/3 md:w-1/4\n                my-2\n                h-16\n                md:border-4\n                scale-on-hover\n                animate__animated animate__slideInDown",
           attrs: { src: product.image, alt: product.name },
           on: {
             click: function($event) {
-              return _vm.modifyProduct(product)
+              return _vm.modifyProduct(product, index)
             }
           }
         })

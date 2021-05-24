@@ -1,7 +1,8 @@
 export const goToHome = () => {
     SPA.$router.push('/');
 }
-export const modifyProduct = (product) => {
+export const modifyProduct = (product, indexInProductList) => {
+    product.indexInList = indexInProductList;
     Store.productToModify = product;
     SPA.$router.push('/modify');
 }
