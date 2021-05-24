@@ -22,14 +22,13 @@ class CategorySeeder extends Seeder
             DB::table('categories')
                 ->where('id', '=', $category->id)
                 ->update(['image' => 'images/' . $images[array_rand($images)] . '.jpg']);
-//            $category->update(['image' => 'images/' . array_rand(['hamburger', 'coke', 'pizza', 'fries']) . '.jpg']);
         }
-        for ($i = 0; $i < 30; $i++) {
-            DB::table('category_product')->insert([
-                [
-                    'product_id' => Product::all()->random()->id,
-                    'category_id' => Category::all()->random()->id
-                ]]);
-        }
+//        for ($i = 0; $i < 30; $i++) {
+//            DB::table('category_product')->insert([
+//                [
+//                    'product_id' => Product::all()->random()->id,
+//                    'category_id' => Category::all()->random()->id
+//                ]]);
+//        }
     }
 }
