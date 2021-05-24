@@ -27,6 +27,7 @@ class ProductFactory extends Factory
         return [
             'category_id' => Category::all()->random(),
             'name' => $this->faker->name(),
+            'cost' => $this->faker->numberBetween(1,10000),
             'image' => 'images/coke.jpg',
             'description' => $this->faker->text(),
         ];

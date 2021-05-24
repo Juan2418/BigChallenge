@@ -65,6 +65,7 @@ export default {
             creditcardError: false,
         }
     },
+
     methods: {
         CVVOnlyDigits() {
             return /^\d+$/g.test(this.cvv);

@@ -23,12 +23,5 @@ class CategorySeeder extends Seeder
                 ->where('id', '=', $category->id)
                 ->update(['image' => 'images/' . $images[array_rand($images)] . '.jpg']);
         }
-//        for ($i = 0; $i < 30; $i++) {
-//            DB::table('category_product')->insert([
-//                [
-//                    'product_id' => Product::all()->random()->id,
-//                    'category_id' => Category::all()->random()->id
-//                ]]);
-//        }
     }
 }

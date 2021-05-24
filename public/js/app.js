@@ -2615,6 +2615,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_NumberInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/NumberInput */ "./resources/js/components/NumberInput.vue");
 /* harmony import */ var _components_NavBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/NavBar */ "./resources/js/components/NavBar.vue");
 /* harmony import */ var _components_Checkbox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Checkbox */ "./resources/js/components/Checkbox.vue");
+/* harmony import */ var _utilities__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utilities */ "./resources/js/utilities.js");
 //
 //
 //
@@ -2658,6 +2659,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
@@ -2672,7 +2674,8 @@ __webpack_require__.r(__webpack_exports__);
       product: Store.productToModify,
       ingredients: [],
       indexInList: -1,
-      quantity: Store.productToModify.quantity
+      quantity: Store.productToModify.quantity,
+      previousRoute: '/'
     };
   },
   computed: {
@@ -2716,7 +2719,22 @@ __webpack_require__.r(__webpack_exports__);
       this.removeSelfFromCart();
       this.addToCart();
       this.resetProductToModify();
-      SPA.$router.push('/');
+      (0,_utilities__WEBPACK_IMPORTED_MODULE_3__.goToHome)();
+    },
+    previousViewWasCart: function previousViewWasCart() {
+      return SPA.previousRoute === '/cart';
+    }
+  },
+  beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+    SPA.previousRoute = from.path;
+    next();
+  },
+  beforeRouteLeave: function beforeRouteLeave(to, from, next) {
+    if (this.previousViewWasCart()) {
+      SPA.previousRoute = '/modify';
+      next('/cart');
+    } else {
+      next();
     }
   }
 });
@@ -3094,7 +3112,10 @@ window.Store = new Vue({
 });
 window.SPA = new Vue({
   el: '#app',
-  router: _routes_js__WEBPACK_IMPORTED_MODULE_0__.default
+  router: _routes_js__WEBPACK_IMPORTED_MODULE_0__.default,
+  data: {
+    previousRoute: "/"
+  }
 });
 
 /***/ }),
@@ -3226,8 +3247,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "creditCardIsValid": () => (/* binding */ creditCardIsValid),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue_router_src_util_errors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router/src/util/errors */ "./node_modules/vue-router/src/util/errors.js");
+
 var goToHome = function goToHome() {
-  SPA.$router.push('/');
+  SPA.$router.push('/')["catch"](function (err) {
+    return (0,vue_router_src_util_errors__WEBPACK_IMPORTED_MODULE_0__.isNavigationFailure)(err) ? console.log("redirected") : console.error(err);
+  });
 };
 var modifyProduct = function modifyProduct(product, indexInProductList) {
   product.indexInList = indexInProductList;
@@ -7859,7 +7884,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.layout-product[data-v-30507a8f] {\n    grid-template-areas: \"a b\";\n}\n.image-product[data-v-30507a8f] {\n    grid-area: b;\n}\n.quantity-section[data-v-30507a8f] {\n    grid-template-areas: \"a b\";\n}\n.quantity-label[data-v-30507a8f] {\n    grid-area: b;\n}\n@media (max-width: 770px) {\n.layout-product[data-v-30507a8f] {\n        grid-template-areas: \"b\" \"a\";\n}\n.quantity-section[data-v-30507a8f] {\n        grid-template-areas: \"a\" \"b\";\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.layout-product[data-v-30507a8f] {\r\n    grid-template-areas: \"a b\";\n}\n.image-product[data-v-30507a8f] {\r\n    grid-area: b;\n}\n.quantity-section[data-v-30507a8f] {\r\n    grid-template-areas: \"a b\";\n}\n.quantity-label[data-v-30507a8f] {\r\n    grid-area: b;\n}\n@media (max-width: 770px) {\n.layout-product[data-v-30507a8f] {\r\n        grid-template-areas: \"b\" \"a\";\n}\n.quantity-section[data-v-30507a8f] {\r\n        grid-template-areas: \"a\" \"b\";\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -46723,6 +46748,113 @@ if (inBrowser && window.Vue) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VueRouter);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-router/src/util/errors.js":
+/*!****************************************************!*\
+  !*** ./node_modules/vue-router/src/util/errors.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "NavigationFailureType": () => (/* binding */ NavigationFailureType),
+/* harmony export */   "createNavigationRedirectedError": () => (/* binding */ createNavigationRedirectedError),
+/* harmony export */   "createNavigationDuplicatedError": () => (/* binding */ createNavigationDuplicatedError),
+/* harmony export */   "createNavigationCancelledError": () => (/* binding */ createNavigationCancelledError),
+/* harmony export */   "createNavigationAbortedError": () => (/* binding */ createNavigationAbortedError),
+/* harmony export */   "isError": () => (/* binding */ isError),
+/* harmony export */   "isNavigationFailure": () => (/* binding */ isNavigationFailure)
+/* harmony export */ });
+// When changing thing, also edit router.d.ts
+const NavigationFailureType = {
+  redirected: 2,
+  aborted: 4,
+  cancelled: 8,
+  duplicated: 16
+}
+
+function createNavigationRedirectedError (from, to) {
+  return createRouterError(
+    from,
+    to,
+    NavigationFailureType.redirected,
+    `Redirected when going from "${from.fullPath}" to "${stringifyRoute(
+      to
+    )}" via a navigation guard.`
+  )
+}
+
+function createNavigationDuplicatedError (from, to) {
+  const error = createRouterError(
+    from,
+    to,
+    NavigationFailureType.duplicated,
+    `Avoided redundant navigation to current location: "${from.fullPath}".`
+  )
+  // backwards compatible with the first introduction of Errors
+  error.name = 'NavigationDuplicated'
+  return error
+}
+
+function createNavigationCancelledError (from, to) {
+  return createRouterError(
+    from,
+    to,
+    NavigationFailureType.cancelled,
+    `Navigation cancelled from "${from.fullPath}" to "${
+      to.fullPath
+    }" with a new navigation.`
+  )
+}
+
+function createNavigationAbortedError (from, to) {
+  return createRouterError(
+    from,
+    to,
+    NavigationFailureType.aborted,
+    `Navigation aborted from "${from.fullPath}" to "${
+      to.fullPath
+    }" via a navigation guard.`
+  )
+}
+
+function createRouterError (from, to, type, message) {
+  const error = new Error(message)
+  error._isRouter = true
+  error.from = from
+  error.to = to
+  error.type = type
+
+  return error
+}
+
+const propertiesToLog = ['params', 'query', 'hash']
+
+function stringifyRoute (to) {
+  if (typeof to === 'string') return to
+  if ('path' in to) return to.path
+  const location = {}
+  propertiesToLog.forEach(key => {
+    if (key in to) location[key] = to[key]
+  })
+  return JSON.stringify(location, null, 2)
+}
+
+function isError (err) {
+  return Object.prototype.toString.call(err).indexOf('Error') > -1
+}
+
+function isNavigationFailure (err, errorType) {
+  return (
+    isError(err) &&
+    err._isRouter &&
+    (errorType == null || err.type === errorType)
+  )
+}
 
 
 /***/ }),
