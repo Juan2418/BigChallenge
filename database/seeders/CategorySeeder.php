@@ -17,8 +17,12 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
+        $images = ['hamburgers', 'coke', 'pizza', 'fries'];
         foreach(Category::all() as $category) {
-            $category->update(['image' => 'images/' . array_rand(['hamburger', 'coke', 'pizza', 'fries']) . '.jpg']);
+            DB::table('categories')
+                ->where('id', '=', $category->id)
+                ->update(['image' => 'images/' . $images[array_rand($images)] . '.jpg']);
+//            $category->update(['image' => 'images/' . array_rand(['hamburger', 'coke', 'pizza', 'fries']) . '.jpg']);
         }
         for ($i = 0; $i < 30; $i++) {
             DB::table('category_product')->insert([
