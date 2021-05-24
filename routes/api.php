@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/categories', function () {
+    return Category::with('products.ingredients')->latest()->get();
+});
+
+Route::post('/order', 'App\Http\Controllers\OrderController@store');
+
+
+Route::group(['prefix' => 'product-popularity', 'as' => 'product-popularity'], function () {
+    Route::get('/chart', 'App\Http\Controllers\PopularityController@chartData');
+    Route::get('/names', 'App\Http\Controllers\PopularityController@names');
+    Route::get('/totals', 'App\Http\Controllers\PopularityController@totalOrderCount');
+    Route::get('/', 'App\Http\Controllers\PopularityController@index');
+});
+
